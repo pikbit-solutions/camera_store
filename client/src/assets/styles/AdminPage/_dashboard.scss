@@ -1,0 +1,97 @@
+.dash-main{
+    margin: 50px 70px;
+    background-color: #333333;
+    padding: 40px;
+    align-items: center;
+    border-radius: 25px;
+    @media #{$md}{
+        margin: 30px 50px;
+        padding: 35px;
+        border-radius: 20px;
+    }
+    @media #{$sm}{
+        margin: 90px 50px 30px;
+        padding: 35px;
+        border-radius: 20px;
+    }
+    @media #{$mobile}{
+        margin: 90px 20px 30px;
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .dash-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        @media #{$sm}{
+            flex-direction: column;
+        }
+
+
+        .dash-box-left{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .dash-left-title{
+                font-size: x-large;
+                color: white;
+                font-weight: 500;
+                @media #{$md}{
+                    font-size:20px;
+                }
+                
+            }
+            .dash-left-number{
+                font-size:65px;
+                color: white;
+                font-weight: 500;
+                font-family: calibri;
+                @media #{$md}{
+                    font-size:40px;
+                }
+            }
+        }
+    }
+
+    .dash-mid-line{
+        width: 5px;
+        background-color: rgb(207, 207, 207);
+        border-radius: 25px;
+        @media #{$md}{
+            width:3px;
+        }
+        @media #{$sm}{
+            width:100%;
+            height: 3px;
+            margin: 10px 0;
+        }
+    }
+
+    .dash-box-right{
+        .dash-right-info{
+            margin: 10px 0;
+            font-size: 25px;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            @media #{$md}{
+                font-size:20px;
+            }
+            @media #{$sm}{
+                font-size:15px;
+            }
+            td{
+                padding: 10px;
+                @media #{$md}{
+                    padding: 5px;
+                }
+
+            }
+            // display: flex;
+
+            
+        }
+    }
+}

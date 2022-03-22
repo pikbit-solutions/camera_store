@@ -1,0 +1,50 @@
+$goldYellow:rgb(252, 182, 12);
+$bgColor:rgb(48, 48, 53);
+$bgColorHover:rgb(67, 67, 80);
+
+.search{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    padding: 30px 0 40px 0;
+}
+.search-box{    
+    display: flex;
+    border: 1px solid $goldYellow;
+    border-radius: 999px;
+    width: auto;
+    margin: 0;
+    background-color:$bgColor;
+}
+.search-box > input{
+    padding-left: 15px;
+    flex:1;
+    border: none;
+    background-color:$bgColor ;
+    border-radius: 999px;
+    color: $goldYellow;
+}
+.search-box > input:hover, .price:hover, .arrival-time:hover{
+    background-color:$bgColorHover ;
+}
+
+.search-box>input:focus{
+    outline-width:0;
+}
+
+.iconbutton{    
+    background-color: $goldYellow  !important;
+    border-top-right-radius: 999px !important;
+    border-bottom-right-radius: 999px !important;
+}
+
+.price, .arrival-time{
+    padding: 5px;
+    border-radius: 9px;
+    border: solid $goldYellow 1px;
+    background-color: $bgColor;
+    color: $goldYellow;
+    width: 200px;
+}

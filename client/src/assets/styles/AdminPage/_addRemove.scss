@@ -1,0 +1,124 @@
+$table-margin : 60px;
+$button-color : #D79F17;
+$image-width : 70px;
+
+.item-table{
+    margin-left: $table-margin;
+    margin-right: $table-margin;
+    margin-top: 50px;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+}
+
+.table-title{
+    display: flex;
+    flex-direction: row;
+    border-left: 8px solid black;
+    background-color: #C4C4C4;
+    font-size: 20px;
+    font-weight: 500;
+    justify-content: space-between;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    .table-title-1{
+        padding: 20px;
+    }
+
+    .item-add-button{
+        border-radius: 10px;
+        padding:10px 20px;
+        margin-right: 40px;
+        background-color: white;
+        color: black;
+        font-size: 15px;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: all 0.3s ease-in-out;
+        
+        &:active{
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
+            transform: scale(0.99);
+        }
+        &:hover{
+            color: black;
+            background-color: $button-color;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    
+}
+
+.item-list{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    .item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 5px;
+        margin:3px 0;
+        font-size: 18px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        // box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        border-radius: 10px;
+
+        .item-image{
+            margin: 10px 10px;
+            flex: 1;
+            img{
+                width: $image-width; 
+                height: $image-width;  
+                object-fit: scale-down;         
+            }
+        }
+        .item-name{
+            flex: 1;
+            margin: 0 10px;
+        }
+        .item-price{
+            flex: 1;
+            margin: 0 10px;
+        }
+        .item-button-list{
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            margin: 0 10px;
+        }
+        
+    }
+
+}
+
+.ibl{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-button{
+    padding: 1px;
+    margin: 0 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.05);
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        transition: all 0.3s;
+    }
+
+    &:active{
+        transform: scale(1);
+    }
+}
+
+

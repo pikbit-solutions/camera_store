@@ -1,0 +1,26 @@
+$mobile: "only screen and (max-width: 460px)";
+
+.cs-container{
+  background-color: #282828;
+  height: 100vh;
+}
+.cs-cont{
+  width: 100%;
+  height: 100vh;
+  background: url("../../images/coverSoon.jpg");
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  filter: grayscale(30%);
+}
+.cs-head{
+  padding: 0 10px;
+  text-align: center;
+  font-size: 75px;
+  margin: auto;
+  color: white;
+  text-shadow: black 3px 3px 5px;
+  @media #{$mobile}{
+    font-size: 60px;
+  }
+}

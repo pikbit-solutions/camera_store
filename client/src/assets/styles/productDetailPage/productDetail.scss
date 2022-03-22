@@ -1,0 +1,22 @@
+$bgdark:#323130;
+$titlecolor:rgb(215,159,23);
+$alcolor:#242424;
+@import 'responsiveVariables';
+.product-detail-main{
+    background-color: $bgdark;
+}
+ .product-detail-lower{
+    padding-top: 0;
+    @media #{$sm}{
+       padding-top: 70px;
+  }
+}
+.product-detail-content{
+    width: 70%;
+    margin: auto;
+}
+
+@import 'camInfo';
+@import 'camTitles';
+@import 'addressLine';
+@import 'productImgs';

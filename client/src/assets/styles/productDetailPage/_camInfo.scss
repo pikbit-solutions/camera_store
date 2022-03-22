@@ -1,0 +1,98 @@
+.camInfo-main{
+    margin:0 auto;
+    width: 65%;
+    
+    .camInfo-container{
+        border-radius: 10px;
+        background-color: $alcolor;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+        padding:15px 15px;
+        margin: 15px 0;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        
+
+
+        .camInfo-specs{
+            flex: 3;
+            padding: 10px;
+            li{
+                margin:4px 0;
+            }
+        }
+
+        .camInfo-btns{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            font-size: large;
+            font-weight: 500;
+
+            .info-sell-btn{
+                // display: inline;
+                background-color: $titlecolor;
+                color: black;
+                border-radius: 10px;
+                padding: 10px;
+                transition: 0.3s all ease;
+                cursor: pointer;
+                user-select: none;
+
+                &:hover{
+                    color: $titlecolor;
+                    background-color: black;
+                    transition: 0.3s all ease;
+                }
+                &:active{
+                    transform: scale(0.95);
+                }
+            }
+            .info-msg-btn{
+                // display: inline;
+                background-color: white;
+                color: black;
+                border-radius: 10px;
+                padding: 10px;
+                padding: 10px;
+                transition: 0.3s all ease;
+                cursor: pointer;
+                user-select: none;
+
+                &:hover{
+                    color: white;
+                    background-color: black;
+                    transition: 0.3s all ease;
+                }
+
+                &:active{
+                    transform: scale(0.95);
+                }
+            }
+        }
+    }
+
+}
+
+// ->> CamDetails.jsx styles <<-
+
+.camDet-main{
+    margin:30px auto;
+    width: 65%;
+    padding: 0 0 20px;
+    color: white;
+
+    .camDet-title{
+        color: $titlecolor;
+        font-weight: 500;
+        font-size: large;
+    }
+    .camDet-discr{
+        padding: 1px 10px 10px 0;
+        color: white;
+        text-align: justify;
+    }
+}

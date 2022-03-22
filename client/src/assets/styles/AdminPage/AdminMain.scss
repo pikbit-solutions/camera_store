@@ -1,0 +1,43 @@
+$bgdark:#282828;
+$titlecolor:rgb(215,159,23);
+
+$xl-desktop: "only screen and (min-width: 1921px)";
+$desktop: "only screen and (max-width: 1920px)";
+$laptop: "only screen and (max-width: 1399px)";
+$lg: "only screen and (max-width: 1199px)";
+$md: "only screen and (max-width: 991px)";
+$sm: "only screen and  (max-width: 767px)";
+$mobile: "only screen and (max-width: 485px)";
+
+.admin-content{
+    display: flex;
+    flex-direction: row;
+    overflow:hidden;
+}
+
+.admin-content-left{
+    z-index: 2;
+    background-color: #4e4e4e;
+    flex:1;
+    transition : all 0.5s;
+}
+
+.admin-content-right{
+    flex:4;
+    height: 92.5vh;
+    overflow-y:auto;
+
+}
+
+.panel-deactive{
+    display: none;
+    transform: translateX(-20%);
+    transition : all 0.3s;
+}
+
+.comp-activate{
+    display: flex;
+}
+
+
+@import 'leftPanel','dashboard','addRemove','addProduct';

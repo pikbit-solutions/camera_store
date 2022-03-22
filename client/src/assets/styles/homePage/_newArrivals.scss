@@ -1,0 +1,139 @@
+.arrivals{
+    background-color:rgb(40,40,40) ;
+    padding: 20px 40px;
+}
+
+//Apply for all cards
+.arrival-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 50px 0;
+    @media #{$lg}{
+        justify-content: center;
+    }
+}
+
+// Single card css
+.arr-card{
+    width: 250px;
+    background-color: rgb(72,70,70);
+    // border: 1px solid white ;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s;
+    @media #{$laptop}{
+        width: 200px;
+    }
+    @media #{$lg}{
+        margin:20px;
+    }
+    transition: all 0.5s;
+    &:hover{
+        transform: scale(1.05);
+        background:rgba(65, 65, 65, 0.726);
+        transition: all 0.5s;
+    }
+}
+
+.arr-card-holder{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.arr-itm-img{
+    display: flex;
+    justify-content: space-around;
+}
+
+.arr-itm-img img{
+    width: 220px;
+    height: 200px;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 25px;
+    padding: 15px 10px;
+    @media #{$laptop}{
+        width: 170px;
+        height: 170px;
+
+    }
+
+}
+
+.arr-item-info{
+    display: flex;
+    flex-direction: column;
+    background: rgb(215, 159, 23);
+}
+
+.arr-item-info h2{
+    padding: 0px;
+    font-size: 20px;
+    margin: 5px;
+    text-align: center;
+    @media #{$laptop}{
+        font-size: 17px;
+    }
+}
+
+.arr-item-info h1{
+    padding: 0px;
+    margin: 5px;
+    font-size: 20px;
+    text-align: center;
+    @media #{$laptop}{
+        font-size: 17px;
+    }
+}
+
+.arr-item-btn {
+    display: flex;
+    text-decoration: none;
+}
+
+.arr-item-btn div{
+    cursor: pointer;
+    border-radius: 15px;
+    // box-shadow: 1px 2px 5px #666666;
+    font-family: 'Times New Roman', Times, serif;
+    color: #D79F17;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #282828;
+    padding: 10px 20px 10px 20px;
+    outline-width: none;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    @media #{$laptop}{
+        padding: 7px 10px;
+        font-size: 17px;
+        border-radius: 10px;
+    }
+
+    &:hover{
+        background-color: #D79F17;
+        color: #282828;
+        transition: all 0.3s;
+    }
+    &:active{
+        transform: scale(0.95);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 13px 8px;
+    }
+}
+
+.arr-anchor {
+    text-decoration: none;
+    color: rgb(215, 159, 23);
+    font-family: Roboto;
+    font-weight: 550;
+    font-size: 24px;
+    display: block;
+    text-align: right;
+    margin-right: 25px;
+}

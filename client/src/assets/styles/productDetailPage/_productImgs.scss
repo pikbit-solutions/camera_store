@@ -1,0 +1,42 @@
+.pro-imgs-main{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    .pro-imgs-container{
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: row;
+        background-color: $alcolor;
+        .pro-disp-img{
+            display: flex;
+            justify-content: center;
+            margin:0 10px;
+            img{
+                width:500px;
+                height: 350px;
+                object-fit: cover;
+            }
+        }
+        .pro-sm-imgs{
+            display: flex;
+            flex-direction: column;
+            justify-content:space-between;
+            .pro-img{
+                img{
+                    opacity: 0.5;
+                    padding: 0;
+                    margin: 0;
+                    width: 120px;
+                    height: 84px;
+                    object-fit: cover;
+
+                    &:hover{
+                        transform: scale(1.01);
+                        opacity: 1;
+                        transition: 0.5 all ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}

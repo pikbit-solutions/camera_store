@@ -1,0 +1,36 @@
+$bgdark:#282828;
+$titlecolor:rgb(215,159,23);
+@import 'responsiveVariables';
+
+.page{
+    max-width: 80%;
+    margin: auto;
+
+    @media #{$sm}{
+        max-width: 100%;
+    }
+
+}
+
+.home{
+    //background-color: #000000;
+    background-image: url("../../images/bg1.jpg");
+    background-repeat: repeat;
+}
+
+.title{
+    color: $titlecolor;
+    font-size: 45px;
+
+    @media #{$laptop}{
+        font-size : 32px;
+    }
+    @media #{$sm}{
+        text-align : center;
+    }
+    @media #{$mobile}{
+        font-size : 25px;
+    }
+}
+
+@import 'navbar', 'hero', 'newArrivals','about','contactus','footer';

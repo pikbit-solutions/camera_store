@@ -1,0 +1,16 @@
+.camTitle-main{
+    margin: auto;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 27px;
+    font-weight: 500;
+
+    .camTitle-name{
+        color: #FCB60C;
+    }
+
+    .camTitle-price{
+        color: white;
+    }
+}

@@ -9,6 +9,8 @@ const productSchema = mongoose.Schema({
     price : Number,
     specs : [String],
     description : String,
+    images : [String],
+    featureImg : String,
 });
 
 const products = mongoose.model('product', productSchema);

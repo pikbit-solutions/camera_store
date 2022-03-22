@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import ItemList from './AddRemove/ItemList'
 import AddProduct from './AddRemove/AddProduct'
-import cam1 from '../../assets/images/cam1.png';
-import cam2 from '../../assets/images/cam2.jpg';
-import cam3 from '../../assets/images/50D.png';
+import {getProducts} from '../../redux/actions/productActions.js';
 import Item from './AddRemove/ARItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const AddRemove = () => {
     const products = useSelector((state) => state.products);
     const [loadAdd, setloadAdd] = useState(0);
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+      dispatch(getProducts());
+    },[dispatch]);
 
     const addButtonSwitch = () => {
         setloadAdd(1)
@@ -35,7 +39,7 @@ const AddRemove = () => {
                         
                             {products.map(product=>{
                                 return (<Item 
-                                    // image={item.image}
+                                    image={product.featureImg}
                                     camName={product.modelname}
                                     camPrice={product.price}/>)
                             })}

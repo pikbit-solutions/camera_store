@@ -1,4 +1,4 @@
-import products from '../models/productModel.js';
+// import products from '../models/productModel.js';
 import Products from '../models/productModel.js'
 
 export const getProducts = async (req ,res)=>{
@@ -14,8 +14,8 @@ export const addProduct = async (req, res) => {
     const newProduct = new Products(req.body);
     try{
         await newProduct.save();
-        res.json("Added");
+        res.json("Added"); 
     }catch(err){
-        res.status(404).json(err);
+        res.status(404).json({message : err.message});
     }
 }

@@ -4,7 +4,7 @@ import { getProducts, addProduct } from '../controllers/productController.js';
 const router = express.Router();
 
 router.get('/', getProducts);
-router.post('/',addProduct)
+router.post('/',addProduct);
 
 
 export default router;

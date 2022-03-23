@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 // import ItemList from './AddRemove/ItemList'
 import AddProduct from './AddRemove/AddProduct'
-import {getProducts} from '../../redux/actions/productActions.js';
 import Item from './AddRemove/ARItem';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,12 +9,6 @@ const AddRemove = () => {
     const products = useSelector((state) => state.products);
     const [loadAdd, setloadAdd] = useState(0);
 
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-      dispatch(getProducts());
-    },[dispatch]);
-
     const addButtonSwitch = () => {
         setloadAdd(1)
     }
@@ -23,6 +16,8 @@ const AddRemove = () => {
     const abtn = () => {
         setloadAdd(0)
     }
+
+    
 
     return (
         <div>
@@ -36,13 +31,15 @@ const AddRemove = () => {
                             </div>
                         </div>
                         <div className='item-list'>
-                        
                             {products.map(product=>{
-                                return (<Item 
+                                return (<Item key={product._id}
+                                    id = {product._id}
                                     image={product.featureImg}
                                     camName={product.modelname}
-                                    camPrice={product.price}/>)
-                            })}
+                                    camPrice={product.price}
+                                />)
+                                })
+                            }
                         </div>
                     </div>
                 </div>

@@ -1,30 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Specs from './SpecDetails'
 import FileBase from 'react-file-base64'
-import { useDispatch } from 'react-redux'
-import { addProduct } from '../../../redux/actions/productActions'
+import { addProduct, getProducts } from '../../../redux/actions/productActions'
+// import {getProducts} from '../../redux/actions/productActions.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 const AddProduct = ({ active, btn }) => {
-
-  const [productName, setProductName] = useState('')
-  const [productPrice, setProductPrice] = useState('')
-  const [productDescrip, setProductDescrip] = useState('')
+  
   const dispatch = useDispatch();
-
+  const specRef = useRef();
+  const [specData, setSpecData] = useState([]);
   const [productData, setProductData] = useState(
     {
       modelname: '',
       stock: 0,
       price: 0,
-      specs: [' '],
+      specs: [],
       description: '',
       images: [],
       featureImg: ' '
     });
 
+    useEffect(()=>{
+        dispatch(getProducts());
+    },[productData]);
+    
   const submitHandle = (e) => {
     e.preventDefault();
+    setProductData({...productData,specs:specData});
     dispatch(addProduct(productData));
+    clearForm();
+  }
+
+  const specHandle = (specs)=>{
+    setSpecData(specs);
+  }
+
+  const clearForm=()=>{
+    specRef.current.clearSpecs();
+    setProductData({modelname: '',stock: 0,price: 0,specs: [],description: '',images: [],featureImg: ' '})
   }
 
   return (
@@ -72,7 +86,7 @@ const AddProduct = ({ active, btn }) => {
               <p> Specifications  : </p>
             </div>
             <div className='item-input'>
-              <Specs placehold="add specs" />
+              <Specs placehold="add specs" giveSpecs={specHandle} ref={specRef}/>
             </div>
           </div>
 
@@ -97,7 +111,7 @@ const AddProduct = ({ active, btn }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ file }) => setProductData({ ...productData, images: [...productData.images, file] })}
+                  onDone={({ base64 }) => setProductData({ ...productData, images: [...productData.images, base64] })}
                 />
               </div>
 
@@ -106,7 +120,7 @@ const AddProduct = ({ active, btn }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ file }) => setProductData({ ...productData, images: [...productData.images, file] })}
+                  onDone={({ base64 }) => setProductData({ ...productData, images: [...productData.images, base64] })}
                 />
               </div>
 
@@ -115,7 +129,7 @@ const AddProduct = ({ active, btn }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ file }) => setProductData({ ...productData, images: [...productData.images, file] })}
+                  onDone={({ base64 }) => setProductData({ ...productData, images: [...productData.images, base64] })}
                 />
               </div>
 
@@ -124,7 +138,7 @@ const AddProduct = ({ active, btn }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={({ file }) => setProductData({ ...productData, images: [...productData.images, file] })}
+                  onDone={({ base64 }) => setProductData({ ...productData, images: [...productData.images, base64] })}
                 />
               </div>
 
@@ -140,10 +154,11 @@ const AddProduct = ({ active, btn }) => {
                 />
               </div>
             </div>
+            <button type='submit'>Save</button>
+            <button onClick={clearForm}>clear</button>
           </div>
 
         </div>
-        <button type='submit'>Save</button>
       </form>
 
     </div>

@@ -3,7 +3,8 @@ import SoldBtn from './ItemSoldBtn'
 import EditBtn from './ItemEditBtn'
 import DelBtn from './ItemDelBtn'
 
-const ARItem = ({image,camName,camPrice}) => {
+const ARItem = ({image,camName,camPrice,id}) => {
+
     return (
         <div>
             <div className='item'>
@@ -16,7 +17,7 @@ const ARItem = ({image,camName,camPrice}) => {
                     <div className='item-button-list'>
                         <SoldBtn/>
                         <EditBtn/>
-                        <DelBtn/>
+                        <DelBtn pid={id}/>
                     </div>
                 </div>
             </div>

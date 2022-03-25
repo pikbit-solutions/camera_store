@@ -18,6 +18,8 @@ const AdminContent = () => {
     const RevFeed = () => {setDashboardBtn("Review feedback")}
     const inbox = () => {setDashboardBtn("inbox")}
     const other = () => {setDashboardBtn("other")}
+    const soldItems = () => {setDashboardBtn("soldItems")}
+
 
     return (
         <div>
@@ -28,6 +30,7 @@ const AdminContent = () => {
                         <div className='panel-item' onClick={addRm}>Product add/remove</div>
                         <div className='panel-item' onClick={RevFeed}>Review feedbacks</div>
                         <div className='panel-item' onClick={inbox}>Inbox</div>
+                        <div className='panel-item' onClick={soldItems}>Sold Items</div>
                         <div className='panel-item' onClick={other}>other</div>
                     </div>
                 </div>

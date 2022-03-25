@@ -29,3 +29,12 @@ export const delProduct = async (req,res)=>{
     await products.findByIdAndRemove(id);
     res.json({message:'deleted !'});
 }
+
+export const updateProduct = async (req,res)=>{
+    const { id:_id } = req.params;
+    const product = req.body;
+    if(!mongoose.Types.ObjectId.isValid(id)) 
+        return res.status(404).send('No such product');
+    const updatedProduct = await products.findByIdAndUpdate(_id, product,{new:true});
+    res.json(updatedProduct);
+}

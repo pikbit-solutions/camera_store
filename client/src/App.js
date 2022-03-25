@@ -21,9 +21,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<AdminMain />} />
-          <Route path="/storepage" element={<Storepage />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/" exact element={<Homepage/>} />
+          <Route path="/store" exact element={<Storepage/>} />
+          <Route path='/store/product/:id' element={<Product/>} />
+          <Route path='/admin' element={<AdminMain/>} />
         </Routes>
       </div>
     </BrowserRouter>

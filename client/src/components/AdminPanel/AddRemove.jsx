@@ -32,12 +32,13 @@ const AddRemove = () => {
                         </div>
                         <div className='item-list'>
                             {products.map(product=>{
+                                if(product.sold === false)
                                 return (<Item key={product._id}
                                     id = {product._id}
                                     image={product.featureImg}
                                     camName={product.modelname}
                                     camPrice={product.price}
-                                />)
+                                />);
                                 })
                             }
                         </div>

@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Specs from './SpecDetails'
 import FileBase from 'react-file-base64'
 import { addProduct, getProducts } from '../../../redux/actions/productActions'
 // import {getProducts} from '../../redux/actions/productActions.js';
 import { useDispatch, useSelector } from 'react-redux';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const AddProduct = ({ active, btn }) => {
-  
+  const [changeFocus, setChangeFocus] = useState("")
+  let [addSpec, setAddSpec] = useState([])
+  let [filteredArray, setFilteredArray] = useState([]);
   const dispatch = useDispatch();
-  const specRef = useRef();
-  const [specData, setSpecData] = useState([]);
   const [productData, setProductData] = useState(
     {
       modelname: '',
@@ -21,26 +22,45 @@ const AddProduct = ({ active, btn }) => {
       featureImg: ' '
     });
 
-    useEffect(()=>{
-        dispatch(getProducts());
-    },[productData]);
-    
   const submitHandle = (e) => {
     e.preventDefault();
-    setProductData({...productData,specs:specData});
     dispatch(addProduct(productData));
     clearForm();
   }
 
-  const specHandle = (specs)=>{
-    setSpecData(specs);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [productData]);
+
+  const clearForm = () => {
+    setAddSpec([]);
+    setFilteredArray([]);
+    setProductData({ modelname: '', stock: 0, price: 0, specs: [], description: '', images: [], featureImg: ' ' })
   }
 
-  const clearForm=()=>{
-    specRef.current.clearSpecs();
-    setProductData({modelname: '',stock: 0,price: 0,specs: [],description: '',images: [],featureImg: ' '})
+  const renderSpec = () => {
+    setProductData({...productData,specs:[...addSpec]});
+    setFilteredArray(addSpec.map((specification) => {
+      return (<div style={{ display: "flex", alignContent: "center" }} key={specification}>
+        <div className='spec-name'>{specification}</div>
+        <div className='spec-cancel-icon'><CancelIcon style={{ fontSize: "20px" }} onClick={() => { delSpec(specification) }} /></div>
+      </div>)
+    }))
   }
 
+  const addSpecItem = () => {
+    changeFocus !== "" && changeFocus !== " " && addSpec.push(changeFocus);
+    setAddSpec(addSpec);
+    renderSpec();
+    setChangeFocus("");
+  }
+
+  const delSpec = (val) => {
+    let ind = addSpec.indexOf(val);
+    addSpec.splice(ind, 1);
+    setAddSpec(addSpec);
+    renderSpec();
+  }
   return (
     <div className={active}>
 
@@ -52,7 +72,7 @@ const AddProduct = ({ active, btn }) => {
         <div className='product-back' onClick={btn}>Back</div>
       </div>
 
-      <form onSubmit={submitHandle}>
+      <form >
         <div className='form'>
 
           <div className='item'>
@@ -86,7 +106,17 @@ const AddProduct = ({ active, btn }) => {
               <p> Specifications  : </p>
             </div>
             <div className='item-input'>
-              <Specs placehold="add specs" giveSpecs={specHandle} ref={specRef}/>
+            <div className="spec-item">
+                {filteredArray.map((item)=>{return item})}
+            </div>
+            <div className='add-spec'>
+                <input type='text' 
+                       value={changeFocus} 
+                       onChange={(e)=>{setChangeFocus(e.target.value)}} />
+                <div className='add-spec-btn' onClick={addSpecItem}>
+                    <AddCircleOutlineIcon />
+                </div>
+            </div>
             </div>
           </div>
 
@@ -149,12 +179,12 @@ const AddProduct = ({ active, btn }) => {
                 <FileBase
                   type="file"
                   multiple={false}
-                  onDone={( {base64} ) => setProductData({ ...productData, featureImg: base64 })}
-                  
+                  onDone={({ base64 }) => setProductData({ ...productData, featureImg: base64 })}
+
                 />
               </div>
             </div>
-            <button type='submit'>Save</button>
+            <button onClick={submitHandle}>Save</button>
             <button onClick={clearForm}>clear</button>
           </div>
 

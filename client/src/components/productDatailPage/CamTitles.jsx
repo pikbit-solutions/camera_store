@@ -1,13 +1,27 @@
 import React from 'react'
+import { useState as UseState } from 'react';
+import { specificProApi } from '../../api/apiMain';
 
-const CamTitles = () => {
+const CamTitles = ({ID}) => {
+const [specificProduct,setSpecificProduct] = UseState([]); 
+  const fetchProduct = async () => {
+    try {
+      const { data } = await specificProApi(ID);
+      setSpecificProduct(data)
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+  fetchProduct();
+
   return (
     <div className='camTitle-main'>
         <div className='camTitle-name'>
-            Sony RX100
+            {specificProduct.modelname}
         </div>
         <div className='camTitle-price'>
-            RS. 180,000.00
+          Rs. {specificProduct.price}.00
         </div>
     </div>
   )

@@ -12,19 +12,22 @@ import { useDispatch, useSelector as selector} from 'react-redux';
 
 function storepage() {
     const productList = selector((state) => state.products);
-    console.log(productList);
+    // console.log(productList);
     return (
         <div className='storepage'>
             <NavBar/>
             <div className='store'>
                 <Search/>
                 {productList.map((product)=>{
+                    if(!product.sold)
                     return(
                         <Card 
                         imagepath={product.featureImg}
                         price = {product.price} 
                         specs = {product.specs}
-                        id = {product._id}/>
+                        id = {product._id}
+                        name = {product.modelname}
+                        key = {product._id}/>
                     )
                 })}
             </div>

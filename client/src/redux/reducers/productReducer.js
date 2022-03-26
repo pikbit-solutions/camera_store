@@ -6,6 +6,12 @@ export default (products = [], action)=>{
              return [...products, action.payload];
         case 'DEL_PRODUCT':
             return products.filter((product) => product._id !== action.payload);
+        case 'SELL_PRODUCT' :
+            return products.filter((product) => {
+                if(product.id === action.payload)
+                    product.sold = true;
+                return product;
+            })
         default:
             return products;
     }

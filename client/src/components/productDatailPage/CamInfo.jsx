@@ -1,17 +1,30 @@
 import React from 'react'
+import { useState as UseState } from 'react';
+import { specificProApi } from '../../api/apiMain';
 
-const CamInfo = () => {
+const CamInfo = ({ID}) => {
+
+const [specificProduct,setSpecificProduct] = UseState([]); 
+  const fetchProduct = async () => {
+    try {
+      const { data } = await specificProApi(ID);
+      setSpecificProduct(data.specs)
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+  fetchProduct();
+
   return (
     <div className='camInfo-main'>
         <div className='camInfo-container'>
             <div className='camInfo-specs'>
-            
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
-                <li>12.1MP Full-Frame CMOS Exmor R Sensor</li>
+                {specificProduct.length>0 && specificProduct.map((item)=>{
+                    return(
+                        <li key={item}>{item}</li>
+                    )
+                })}
             </div>
             <div className='camInfo-btns'>
                 <div>

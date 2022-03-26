@@ -1,4 +1,4 @@
-import { useState as UseState } from 'react';
+import { useState, useState as UseState } from 'react';
 import ArrivalCard from './arrivalCard'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector as Selector } from 'react-redux';
@@ -9,11 +9,11 @@ import { useDispatch, useSelector as Selector } from 'react-redux';
 
 
 const newArrivals = () => {
-    let count = 1;
+    let [count,setCount] = UseState(1);
     const allproducts = Selector((state) => state.products);
-    const products = allproducts.reverse().slice(0,4);
-    const [wwidth, setWwidth] = UseState(0);
-    setWwidth(window.innerWidth);
+    const products = allproducts.reverse().filter((product)=>!product.sold).slice(0,4);
+    // const [wwidth, setWwidth] = UseState(0);
+    // setWwidth(window.innerWidth);
     return (
         <div className='arrivals'>
             <h1 className='title'>New Arrivals</h1>
@@ -27,17 +27,19 @@ const newArrivals = () => {
                                 imgPath={product.featureImg}
                                 itm_model={product.modelname}
                                 itm_prize={product.price}
+                                proId = {product._id}
                                 className="arrival-card"
                             />
                         )
+                        
                     }
-                    count++;
+                    
                 })}
 
             </div>
-            <Link to="/storepage" className='arr-anchor'>
+            <a href="/store" className='arr-anchor'>
                 View more...
-            </Link>
+            </a>
         </div>
     )
 }

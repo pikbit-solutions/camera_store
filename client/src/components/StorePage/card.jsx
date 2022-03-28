@@ -11,17 +11,17 @@ function card({imagepath, price,name,specs,id}) {
             </div>
             <div className='card-body'>
                 <h2>{name}</h2>
-                {specs.map((spec)=>{
+                {specs.slice(0,4).map((spec)=>{
                     return(
                         <p>{spec}</p>
                     )
                 })}
             </div>
             <div className='card-end'>
-                <h3 className='price-card'>{price}</h3>
+                <h3 className='price-card'>Rs. {price}.00</h3>
                 {/* <Rating size="small" name="read-only" value={value} readOnly /> */}
                 <Link to={`product/${id}`}>
-                    <Button>Check Out</Button>
+                    <button>Checkout</button>
                 </Link>
             </div>
 

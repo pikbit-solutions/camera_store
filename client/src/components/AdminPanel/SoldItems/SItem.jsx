@@ -1,9 +1,7 @@
 import React from 'react'
-import SoldBtn from './ItemSoldBtn'
-import EditBtn from './ItemEditBtn'
-import DelBtn from './ItemDelBtn'
+import DelBtn from '../AddRemove/ItemDelBtn'
 
-const ARItem = ({image,camName,camPrice,id}) => {
+const SItem = ({image,camName,camPrice,id}) => {
 
     return (
         <div>
@@ -15,8 +13,6 @@ const ARItem = ({image,camName,camPrice,id}) => {
                 <div className='item-price'>Rs. {camPrice}.00</div>
                 <div className='ibl'>
                     <div className='item-button-list'>
-                        <SoldBtn pid={id}/>
-                        <EditBtn/>
                         <DelBtn pid={id}/>
                     </div>
                 </div>
@@ -25,4 +21,4 @@ const ARItem = ({image,camName,camPrice,id}) => {
     )
 }
 
-export default ARItem
+export default SItem

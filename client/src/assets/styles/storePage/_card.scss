@@ -5,7 +5,7 @@ $goldYellow:rgb(215,159,23);
 }
 .card{
     padding:20px;
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     background-color: $bgColor;
     border-radius: 15px;
@@ -22,16 +22,18 @@ $goldYellow:rgb(215,159,23);
     box-shadow: $goldYellow 0px 0px 5px 0px, $goldYellow 0px 0px 1px 0px;
     transition: all 0.3s;
 }
-
-
-
+.card-photo{
+    flex: 1;
+}
 .card-img{
     // border-top-left-radius: 10px;
     // border-bottom-left-radius: 10px;
     border-radius: 10px;
-    height: 10rem;
     opacity: 0.6;
     // z-index: -1;
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
 }
 .card-body > h2{
     color: $goldYellow;
@@ -44,30 +46,50 @@ $goldYellow:rgb(215,159,23);
     margin-bottom: 3px;
 }
 .card-body{
-    padding-left: 20px;
+    flex: 4;
+    padding-left: 5px;
 }
 .card-end {
     font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    // justify-items: flex-end;
 }
-.card-end button:hover {
-    background-color: rgb(209, 155, 29);
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-                rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-                rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-    transition: all 0.3s;
-}
-.card-end button {
-    color: rgb(43, 43, 48);
-    margin-top: 4rem;
-    background-color: $goldYellow;
-    font-family: 'Roboto';
-    font-weight: 600;
-    border-radius: 9px;
+
+.card-end {
+    button {
+        text-decoration: none;
+        color: rgb(43, 43, 48);
+        padding: 7px 14px;
+        outline-style: none;
+        font-size: large;
+        cursor: pointer;
+        user-select: none;
+        margin-top: 4rem;
+        background-color: $goldYellow;
+        font-family: 'Roboto';
+        font-weight: 600;
+        border-radius: 9px;
+        &:hover {
+            background-color: rgb(43, 43, 48);
+            color: $goldYellow;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+                        rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+                        rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+            transition: all 0.3s;
+        }
+    }
 }
 .card-end .MuiRating-icon{
     color: $goldYellow;
 }
 
 .price-card{
+    background-color: #0f0f0f21;
+    border:1px solid #2b2b2b;
+    border-radius: 10px;
+    padding: 5px 10px;
     color: whitesmoke;
+    font-size: x-large;
 }

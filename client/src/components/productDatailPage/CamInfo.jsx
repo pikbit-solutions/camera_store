@@ -18,6 +18,7 @@ const [specificProduct,setSpecificProduct] = UseState([]);
 
   return (
     <div className='camInfo-main'>
+      {specificProduct.length>0 && (
         <div className='camInfo-container'>
             <div className='camInfo-specs'>
                 {specificProduct.length>0 && specificProduct.map((item)=>{
@@ -37,6 +38,7 @@ const [specificProduct,setSpecificProduct] = UseState([]);
                 </div>
             </div>
         </div>
+      )}
     </div>
   )
 }

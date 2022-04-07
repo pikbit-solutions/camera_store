@@ -2,6 +2,7 @@ import { useState, useState as UseState } from 'react';
 import ArrivalCard from './arrivalCard'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector as Selector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -19,7 +20,7 @@ const newArrivals = () => {
             <h1 className='title'>New Arrivals</h1>
             <div className='arrival-cards'>
 
-                {products.map((product) => {
+                {products.length>0 ? products.map((product) => {
                     if (count < 4 && !product.sold) {
                         return (
                             <ArrivalCard
@@ -34,7 +35,7 @@ const newArrivals = () => {
                         
                     }
                     
-                })}
+                }):<CircularProgress color='warning' style={{margin:'auto'}}/>}
 
             </div>
             <a href="/store" className='arr-anchor'>

@@ -16,7 +16,7 @@ const ARItem = ({image,camName,camPrice,id}) => {
                 <div className='ibl'>
                     <div className='item-button-list'>
                         <SoldBtn pid={id}/>
-                        <EditBtn/>
+                        <EditBtn pid={id}/>
                         <DelBtn pid={id}/>
                     </div>
                 </div>

@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const AddProduct = ({ active, btn }) => {
-  
+const UpdateProduct = ({ active, btn }) => {
+
   //for specs
   const [changeFocus, setChangeFocus] = useState("")
   let [addSpec, setAddSpec] = useState([])
   let [filteredArray, setFilteredArray] = useState([]);
 
-  //for others 
+  //for others
   const dispatch = useDispatch();
   const [productData, setProductData] = useState(
     {
@@ -43,7 +43,7 @@ const AddProduct = ({ active, btn }) => {
   }
 
   const renderSpec = () => {
-    setProductData({...productData,specs:[...addSpec]});
+    setProductData({ ...productData, specs: [...addSpec] });
     setFilteredArray(addSpec.map((specification) => {
       return (<div style={{ display: "flex", alignContent: "center" }} key={specification}>
         <div className='spec-name'>{specification}</div>
@@ -65,6 +65,7 @@ const AddProduct = ({ active, btn }) => {
     setAddSpec(addSpec);
     renderSpec();
   }
+
   return (
     <div className={active}>
 
@@ -110,17 +111,17 @@ const AddProduct = ({ active, btn }) => {
               <p> Specifications  : </p>
             </div>
             <div className='item-input'>
-            <div className="spec-item">
-                {filteredArray.map((item)=>{return item})}
-            </div>
-            <div className='add-spec'>
-                <input type='text' 
-                       value={changeFocus} 
-                       onChange={(e)=>{setChangeFocus(e.target.value)}} />
+              <div className="spec-item">
+                {filteredArray.map((item) => { return item })}
+              </div>
+              <div className='add-spec'>
+                <input type='text'
+                  value={changeFocus}
+                  onChange={(e) => { setChangeFocus(e.target.value) }} />
                 <div className='add-spec-btn' onClick={addSpecItem}>
-                    <AddCircleOutlineIcon />
+                  <AddCircleOutlineIcon />
                 </div>
-            </div>
+              </div>
             </div>
           </div>
 
@@ -194,9 +195,8 @@ const AddProduct = ({ active, btn }) => {
 
         </div>
       </form>
-
     </div>
   )
 }
 
-export default AddProduct
+export default UpdateProduct

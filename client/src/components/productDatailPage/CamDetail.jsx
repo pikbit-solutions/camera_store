@@ -3,8 +3,8 @@ import { useState as UseState } from 'react';
 import { specificProApi } from '../../api/apiMain';
 //scss styles are in _caminfo.scss
 
-const CamDetail = ({ID}) => {
-    const [specificProduct,setSpecificProduct] = UseState({}); 
+const CamDetail = ({ ID }) => {
+    const [specificProduct, setSpecificProduct] = UseState({});
     const fetchProduct = async () => {
         try {
             const { data } = await specificProApi(ID);
@@ -17,12 +17,16 @@ const CamDetail = ({ID}) => {
     fetchProduct();
     return (
         <div className='camDet-main'>
-            <div className='camDet-title'>
-                Details
+            {specificProduct.description && (<div>
+
+                <div className='camDet-title'>
+                    Details
+                </div>
+                <div className='camDet-discr'>
+                    {specificProduct.description}
+                </div>
             </div>
-            <div className='camDet-discr'>
-                {specificProduct.description}
-            </div>
+            )}
         </div>
     )
 }

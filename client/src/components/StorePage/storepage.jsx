@@ -7,6 +7,7 @@ import '../../assets/styles/storePage/storepage.scss';
 import Sonybox from '../../assets/images/Sonybox.jpg';
 import Sonycam from '../../assets/images/Sony.jpg';
 import Footer from '../HomePage/footer';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch, useSelector as selector} from 'react-redux';
 
 
@@ -18,7 +19,7 @@ function storepage() {
             <NavBar/>
             <div className='store'>
                 <Search/>
-                {productList.map((product)=>{
+                {productList.length>0 ? productList.map((product)=>{
                     if(!product.sold)
                     return(
                         <Card 
@@ -29,7 +30,7 @@ function storepage() {
                         name = {product.modelname}
                         key = {product._id}/>
                     )
-                })}
+                }) : (<CircularProgress color='warning' style={{margin:'10px'}}/>)}
             </div>
             <Footer />
         </div>

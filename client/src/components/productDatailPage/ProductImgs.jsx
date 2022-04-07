@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useState as UseState } from 'react';
 import { specificProApi } from '../../api/apiMain';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ProductImgs = ({ID}) => {
 
@@ -34,7 +35,7 @@ const ProductImgs = ({ID}) => {
 
     return (
         <div className='pro-imgs-main'>
-            <div className='pro-imgs-container'>
+            {specificProduct.featureImg ? (<div className='pro-imgs-container'>
                 <div className='pro-disp-img'>
                     <img src={imgList || pic1} alt="main-pic1" />
                 </div>
@@ -52,7 +53,7 @@ const ProductImgs = ({ID}) => {
                         <img src={pic4} alt="pic4" id='4' onClick={(e) => { picFocus(e.target.id) }} />
                     </div>
                 </div>
-            </div>
+            </div>):(<CircularProgress color="warning" />)}
         </div>
     )
 }

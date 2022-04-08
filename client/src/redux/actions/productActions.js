@@ -1,4 +1,4 @@
-import {getproductApi, addProductApi, delProductApi, sellProductApi} from '../../api/apiMain.js';
+import {getproductApi, addProductApi, delProductApi, sellProductApi, updateProductApi} from '../../api/apiMain.js';
 
 export const getProducts = () => async(dispatch) => {
     try{
@@ -34,6 +34,16 @@ export const sellProduct = (id) => async(dispatch) => {
     try{
         await sellProductApi(id);
         dispatch({type:'SELL_PRODUCT', payload:id});
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+export const updateProduct = (id, product) => async(dispatch) =>{
+    try{
+        const {data} = await updateProductApi(id, product);
+        dispatch({type:'UPDATE', payload:data});
     }
     catch(error){
         console.log(error);

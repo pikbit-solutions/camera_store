@@ -31,11 +31,11 @@ export const delProduct = async (req,res)=>{
 }
 
 export const updateProduct = async (req,res)=>{
-    const { id:_id } = req.params;
+    const { id } = req.params;
     const product = req.body;
     if(!mongoose.Types.ObjectId.isValid(id)) 
         return res.status(404).send('No such product');
-    const updatedProduct = await products.findByIdAndUpdate(id, product,{new:true});
+    const updatedProduct = await products.findByIdAndUpdate(id,{...product,id},{new:true});
     res.json(updatedProduct);
 }
 

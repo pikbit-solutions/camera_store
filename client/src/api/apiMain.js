@@ -7,6 +7,7 @@ const specsUrl = `${url}/specs`;
 
 export const getproductApi = () => axios.get(productUrl);
 export const addProductApi = (newProduct) => axios.post(productUrl , newProduct);
+export const updateProductApi = (id, product) => axios.patch(`${productUrl}/${id}`,product);
 export const delProductApi = (id) => axios.delete(`${productUrl}/${id}`);
 export const specificProApi = (Id) => axios.get(`${productUrl}/product/${Id}`);
 export const sellProductApi = (id) => axios.patch(`${productUrl}/sell/${id}`);

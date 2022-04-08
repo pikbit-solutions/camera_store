@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
-import { addProduct, getProducts } from '../../../redux/actions/productActions'
+import { addProduct, getProducts, updateProduct } from '../../../redux/actions/productActions'
 // import {getProducts} from '../../redux/actions/productActions.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const AddProduct = ({ active, btn }) => {
+const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
   
+  const product = useSelector((state)=>currentId?state.products.find((p)=>p._id===currentId):null);
   //for specs
   const [changeFocus, setChangeFocus] = useState("")
   let [addSpec, setAddSpec] = useState([])
@@ -25,21 +26,43 @@ const AddProduct = ({ active, btn }) => {
       images: [],
       featureImg: ' '
     });
+    
+    useEffect(() => {
+      dispatch(getProducts());
+    }, [currentId, productData]);
+
+    useEffect(()=>{
+    if(product){
+      setProductData(product);
+      // console.log("something")
+      setAddSpec(product.specs)
+      setAddSpec(product.specs)
+      setFilteredArray(addSpec.map((specification) => {
+        return (<div style={{ display: "flex", alignContent: "center" }} key={specification}>
+          <div className='spec-name'>{specification}</div>
+          <div className='spec-cancel-icon'><CancelIcon style={{ fontSize: "20px" }} onClick={() => { delSpec(specification) }} /></div>
+        </div>)
+      }))
+    } 
+  },[currentId]);
 
   const submitHandle = (e) => {
     e.preventDefault();
-    dispatch(addProduct(productData));
+    if(currentId){
+      dispatch(updateProduct( currentId,productData));
+    }
+    else{
+      dispatch(addProduct(productData));
+    }
     clearForm();
   }
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [productData]);
 
   const clearForm = () => {
     setAddSpec([]);
     setFilteredArray([]);
     setProductData({ modelname: '', stock: 0, price: 0, specs: [], description: '', images: [], featureImg: ' ' })
+    setCurrentId(null);
   }
 
   const renderSpec = () => {
@@ -71,7 +94,7 @@ const AddProduct = ({ active, btn }) => {
       <div className='titlebar'>
         {/* <div className='title-deco'></div> */}
         <div className='title'>
-          Add Product
+          {currentId?'Edit':'Add'} Product
         </div>
         <div className='product-back' onClick={btn}>Back</div>
       </div>
@@ -188,7 +211,7 @@ const AddProduct = ({ active, btn }) => {
                 />
               </div>
             </div>
-            <button onClick={submitHandle}>Save</button>
+            <button onClick={submitHandle}>{currentId?'Save':'Add'}</button>
             <button onClick={clearForm}>clear</button>
           </div>
 

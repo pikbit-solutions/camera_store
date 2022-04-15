@@ -21,7 +21,7 @@ function card({imagepath, price,name,specs,id}) {
                 <h3 className='price-card'>Rs. {price}.00</h3>
                 {/* <Rating size="small" name="read-only" value={value} readOnly /> */}
                 <Link to={`product/${id}`}>
-                    <button>Checkout</button>
+                    <div className='card-Button'><span></span>Checkout</div>
                 </Link>
             </div>
 

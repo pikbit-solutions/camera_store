@@ -15,6 +15,13 @@ $goldYellow:rgb(215,159,23);
     justify-content:space-between;
     box-shadow: 0px 10px 50px -10px rgba(0,0,0,0.90);
     // height: 200px;
+    @media #{$sm}{
+        max-width: 100%;
+    }
+    @media #{$midmob}{
+        max-width: 200px;
+        flex-direction: column;
+    }
 }
 
 .card:hover{
@@ -23,9 +30,12 @@ $goldYellow:rgb(215,159,23);
     transition: all 0.3s;
 }
 .card-photo{
+    display: flex;
     flex: 1;
 }
 .card-img{
+    margin: auto;
+    align-items: center;
     // border-top-left-radius: 10px;
     // border-bottom-left-radius: 10px;
     border-radius: 10px;
@@ -34,20 +44,52 @@ $goldYellow:rgb(215,159,23);
     height: 130px;
     width: 130px;
     object-fit: cover;
+    @media #{$sm}{
+        height: 110px;
+        width: 110px;
+    }
+    @media #{$midmob}{
+        height: 130px;
+        width: 180px;
+    }
 }
 .card-body > h2{
     color: $goldYellow;
+    margin-left:10px;
     margin-bottom: 10px;
     font-family: 'Times New Roman', Times, serif;
+    @media #{$midmob}{
+        margin-top: 5px;
+        font-size: x-large;
+     }
 }
 .card-body > p{
     color: whitesmoke;
     font-weight: 400;
     margin-bottom: 3px;
+    margin-left:10px;
+    @media #{$sm}{
+        font-size: small;
+    }
+    @media #{$midmob}{
+    //    display: none;
+    &::before{
+        content: '- ';
+        font-size: smaller;
+    }
+    }
 }
 .card-body{
     flex: 4;
     padding-left: 5px;
+    @media #{$midmob}{
+        // display: none;
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        justify-content: flex-start;
+    }
+    
 }
 .card-end {
     font-family: 'Times New Roman', Times, serif;
@@ -55,30 +97,61 @@ $goldYellow:rgb(215,159,23);
     flex-direction: column;
     align-items: flex-end;
     // justify-items: flex-end;
+    @media #{$midmob}{
+        // display: none;
+        align-items: center;
+        justify-content: flex-start;
+    }
 }
 
 .card-end {
-    button {
+    .card-Button{
+        z-index: 2;
+        position: relative;
+        border: 1px solid $goldYellow;
         text-decoration: none;
-        color: rgb(43, 43, 48);
+        color: $goldYellow ; //rgb(43, 43, 48);
         padding: 7px 14px;
-        outline-style: none;
         font-size: large;
         cursor: pointer;
         user-select: none;
         margin-top: 4rem;
-        background-color: $goldYellow;
+        background-color: transparent;
         font-family: 'Roboto';
         font-weight: 600;
-        border-radius: 9px;
+        border-radius: 5px;
         &:hover {
-            background-color: rgb(43, 43, 48);
-            color: $goldYellow;
+            // background-color: rgb(43, 43, 48);
+            color: black;
             box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
                         rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
                         rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
             transition: all 0.3s;
         }
+        @media #{$sm}{
+            font-size: large;
+            margin-top: 3rem;   
+            padding: 5px 10px;
+
+        }
+        @media #{$midmob}{
+            // display: none;
+            margin-top: 1rem;   
+            padding: 7px 14px;      
+         }
+    }
+    .card-Button span{
+        height: 100%;
+        width: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        background-color: $goldYellow;
+        transition: 0.2s all ease-out;
+    }
+    .card-Button:hover span{
+        width: 100%;
     }
 }
 .card-end .MuiRating-icon{
@@ -92,4 +165,11 @@ $goldYellow:rgb(215,159,23);
     padding: 5px 10px;
     color: whitesmoke;
     font-size: x-large;
+    @media #{$sm}{
+        font-size: large;
+    }
+    @media #{$midmob}{
+        margin-top: 10px;
+        font-size: 23px;
+    }
 }

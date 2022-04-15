@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getStorage, ref} from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBdpJ-gMcL9CV34iqG8jGsfoe6BU-msmRc",
-  authDomain: "trintycam-c9fd1.firebaseapp.com",
-  projectId: "trintycam-c9fd1",
-  storageBucket: "trintycam-c9fd1.appspot.com",
-  messagingSenderId: "592179733088",
-  appId: "1:592179733088:web:3a89c89aa84bbe47741905"
+  apiKey: `${process.env.REACT_APP_FB_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_FB_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_FB_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_FB_STG_BUCK}`,
+  messagingSenderId: `${process.env.REACT_APP_FB_MSG_SEND_ID}`,
+  appId: `${process.env.REACT_APP_FB_APP_ID}`
 };
 
 const app = initializeApp(firebaseConfig);

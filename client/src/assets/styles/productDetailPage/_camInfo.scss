@@ -1,7 +1,12 @@
 .camInfo-main{
     margin:0 auto;
     width: 65%;
-    
+    @media #{$xl-desktop}{
+        width: 70%;
+    }
+    @media #{$desktop}{
+        width: 70%;
+    }
     .camInfo-container{
         border-radius: 10px;
         background-color: $alcolor;
@@ -12,11 +17,20 @@
         color: white;
         display: flex;
         flex-direction: row;
-        
+        @media #{$xl-desktop}{
+            padding:15px 25px;
+            
+        }
+        @media #{$desktop}{
+            padding:15px 25px;
+            
+        }
+
 
 
         .camInfo-specs{
             flex: 3;
+            font-size: 18px;
             padding: 10px;
             li{
                 margin:4px 0;
@@ -27,11 +41,11 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
+            align-items: flex-end;
+            justify-content: flex-start;
             font-size: large;
             font-weight: 500;
-
+        
             .info-sell-btn{
                 // display: inline;
                 background-color: $titlecolor;
@@ -41,7 +55,18 @@
                 transition: 0.3s all ease;
                 cursor: pointer;
                 user-select: none;
-
+                margin: 5px;
+                @media #{$xl-desktop}{
+                   padding: 15px;
+                   margin: 10px;
+                    
+                }
+                @media #{$desktop}{
+                    padding: 15px;
+                    margin: 10px;  
+                }
+        
+        
                 &:hover{
                     color: $titlecolor;
                     background-color: black;
@@ -61,7 +86,16 @@
                 transition: 0.3s all ease;
                 cursor: pointer;
                 user-select: none;
-
+                margin: 5px;
+                @media #{$xl-desktop}{
+                    padding: 15px;
+                    margin: 10px;
+                     
+                 }
+                 @media #{$desktop}{
+                     padding: 15px;
+                     margin: 10px;  
+                 }
                 &:hover{
                     color: white;
                     background-color: black;
@@ -85,14 +119,36 @@
     padding: 0 0 20px;
     color: white;
 
+    hr {
+        color: rgba(240, 255, 255, 0.185);
+    }
     .camDet-title{
         color: $titlecolor;
         font-weight: 500;
         font-size: large;
+        @media #{$xl-desktop}{
+            padding: 15px;
+            padding-bottom: 7px;
+            font-size: x-large;
+             
+         }
+         @media #{$desktop}{
+             padding: 15px;
+             padding-bottom: 7px;
+             font-size: x-large;  
+         }
     }
     .camDet-discr{
-        padding: 1px 10px 10px 0;
+        padding: 5px 10px 10px 0;
         color: white;
         text-align: justify;
+        @media #{$xl-desktop}{
+            
+            font-size: medium;
+             
+         }
+         @media #{$desktop}{
+             font-size: medium;  
+         }
     }
 }

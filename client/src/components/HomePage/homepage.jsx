@@ -3,7 +3,7 @@ import Hero from './hero'
 import NewArrivals from './newArrivals'
 import About from './about'
 import Footer from './footer'
-// import ContactUs from './contactus'
+import Reviews from '../ReviewSection/Reviews'
 
 
 const homepage = () => {
@@ -13,6 +13,7 @@ const homepage = () => {
                 <Hero />
                 <NewArrivals />
                 <About />
+                <Reviews />
                 {/*<ContactUs />*/}
                 <Footer />
             </div>

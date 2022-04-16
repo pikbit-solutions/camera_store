@@ -5,6 +5,13 @@
     justify-content: space-between;
     font-weight: 500;
     align-items: center;
+    @media #{$lg}{
+        width: 90%;
+    }
+    @media #{$sm}{
+        width: 100%;
+        
+    }
     .camTitle-name{
         color: #FCB60C;
         font-size: 30px;
@@ -16,6 +23,17 @@
             font-size: 40px;
             
         }
+        @media #{$lg}{
+            font-size: 35px;
+        }
+        @media #{$sm}{
+            font-size: 26px;
+            
+        }
+        @media #{$mobile}{
+           font-size: 20px; 
+        }
+
     }   
     .camTitle-price{
         color: white;
@@ -26,7 +44,16 @@
         }
         @media #{$desktop}{
             font-size: 32px;
+        }
+        @media #{$lg}{
+            font-size: 26px;
+        }
+        @media #{$sm}{
+            font-size: 17px;
             
         }
+        @media #{$mobile}{
+            font-size: 14px; 
+         }
     }
 }

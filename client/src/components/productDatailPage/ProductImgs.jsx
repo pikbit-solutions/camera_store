@@ -7,16 +7,6 @@ import blankImg from '../../assets/images/specificProduct/blank/blank.jpg'
 const ProductImgs = ({ ID }) => {
 
     const [specificProduct, setSpecificProduct] = UseState([]);
-    // const fetchProduct = async () => {
-    //     try {
-    //         const { data } = await specificProApi(ID);
-    //         setSpecificProduct(data)
-    //     }
-    //     catch (error) {
-    //         console.log(error.message);
-    //     }
-    // }
-    // fetchProduct();
     const flag = useRef(true);
     useEffect(async () => {
         try {

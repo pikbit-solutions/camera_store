@@ -7,6 +7,18 @@
     @media #{$desktop}{
         width: 70%;
     }
+    @media #{$lg}{
+        width: 85%;
+    }
+    @media #{$md}{
+        width: 100%;
+    }
+    @media #{$sm}{
+        width: 100%;
+    }
+    @media #{$mobile}{
+        width: 100%;
+    }
     .camInfo-container{
         border-radius: 10px;
         background-color: $alcolor;
@@ -23,6 +35,13 @@
         }
         @media #{$desktop}{
             padding:15px 25px;
+        }
+        @media #{$lg}{
+            padding:15px 25px;
+            
+        }
+        @media #{$mobile}{
+            flex-direction: column;
             
         }
 
@@ -32,6 +51,15 @@
             flex: 3;
             font-size: 18px;
             padding: 10px;
+            @media #{$md}{
+                font-size: 16px;
+            }
+            @media #{$sm}{
+                font-size: 14px;
+            }
+            @media #{$mobile}{
+                flex: 1;
+            }
             li{
                 margin:4px 0;
             }
@@ -45,6 +73,10 @@
             justify-content: flex-start;
             font-size: large;
             font-weight: 500;
+            @media #{$mobile}{
+                flex-direction: row;
+                margin: auto;
+            }
         
             .info-sell-btn{
                 // display: inline;
@@ -59,11 +91,17 @@
                 @media #{$xl-desktop}{
                    padding: 15px;
                    margin: 10px;
-                    
                 }
                 @media #{$desktop}{
                     padding: 15px;
                     margin: 10px;  
+                }
+                @media #{$md}{
+                    font-size: 13px;
+                }
+                @media #{$sm}{
+                    font-size: 12px;
+                    padding: 12px;
                 }
         
         
@@ -90,12 +128,18 @@
                 @media #{$xl-desktop}{
                     padding: 15px;
                     margin: 10px;
-                     
                  }
                  @media #{$desktop}{
                      padding: 15px;
                      margin: 10px;  
                  }
+                 @media #{$md}{
+                    font-size: 12px;
+                }
+                 @media #{$sm}{
+                    font-size: 14px;
+                    padding: 12px;
+                }
                 &:hover{
                     color: white;
                     background-color: black;
@@ -118,6 +162,15 @@
     width: 65%;
     padding: 0 0 20px;
     color: white;
+    @media #{$md}{
+        width: 85%;
+    }
+    @media #{$sm}{
+        width: 95%;
+    }
+    @media #{$mobile}{
+        padding: 0 0 10px;
+    }
 
     hr {
         color: rgba(240, 255, 255, 0.185);
@@ -137,18 +190,26 @@
              padding-bottom: 7px;
              font-size: x-large;  
          }
+         @media #{$mobile}{
+            font-size: large;  
+        }
     }
     .camDet-discr{
         padding: 5px 10px 10px 0;
         color: white;
         text-align: justify;
         @media #{$xl-desktop}{
-            
             font-size: medium;
-             
          }
          @media #{$desktop}{
-             font-size: medium;  
+            font-size: medium;  
          }
+         @media #{$md}{
+            font-size: small;  
+        }
+         @media #{$mobile}{
+            font-size: small;  
+            padding: 5px 10px 10px 0;
+        }
     }
 }

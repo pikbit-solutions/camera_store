@@ -1,20 +1,38 @@
-import React from 'react'
-import { useState as UseState } from 'react';
+import React, { useEffect } from 'react'
+import { useState as UseState, useRef } from 'react';
 import { specificProApi } from '../../api/apiMain';
 //scss styles are in _caminfo.scss
 
 const CamDetail = ({ ID }) => {
+    const flag = useRef(true);
     const [specificProduct, setSpecificProduct] = UseState({});
-    const fetchProduct = async () => {
+    // const fetchProduct = async () => {
+    //     try {
+    //         if (flag.current) {
+    //             const { data } = await specificProApi(ID);
+    //             setSpecificProduct(data);
+    //         }
+    //     }
+    //     catch (error) {
+    //         console.log(error.message);
+    //     }
+    //     flag.current = false;
+    // }
+    // fetchProduct();
+
+    useEffect(async() => {
         try {
-            const { data } = await specificProApi(ID);
-            setSpecificProduct(data)
+            if (flag.current) {
+                const { data } = await specificProApi(ID);
+                setSpecificProduct(data);
+            }
         }
         catch (error) {
             console.log(error.message);
         }
-    }
-    fetchProduct();
+        flag.current = false;
+    }, []);
+
     return (
         <div className='camDet-main'>
             {specificProduct.description && (<div>

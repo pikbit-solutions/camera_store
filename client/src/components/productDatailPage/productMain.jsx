@@ -14,7 +14,8 @@ import { useEffect as UseEffect, useState as UseState } from 'react'
 
 
 const productMain = () => {
-  const {id} = UseParams();
+  const { id } = UseParams();
+
   return (
     <div className='product-detail-main'>
       <Navbar />
@@ -22,7 +23,7 @@ const productMain = () => {
         <AddressLine ID={id} />
         <div className='product-detail-content'>
           <ProductImgs ID={id} />
-          <CamTitles ID={id}  />
+          <CamTitles ID={id} />
           <CamInfo ID={id} />
           <CamDetail ID={id} />
         </div>

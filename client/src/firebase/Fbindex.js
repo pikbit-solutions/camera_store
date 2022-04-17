@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getStorage, ref} from 'firebase/storage';
+import { getStorage, ref, listAll} from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: `${process.env.REACT_APP_FB_API_KEY}`,
@@ -16,3 +16,5 @@ const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 
 export const productImageRef = ref(storage, 'product_images');
+export const galleryRef = ref(storage, 'gallery');
+

@@ -1,0 +1,56 @@
+.gal-img{
+    width:100%;
+    padding: 3px;
+    opacity: 0.7;
+    z-index: 0;
+    // filter: grayscale(30%);
+    filter: sepia(30%);
+
+    &:hover {
+        opacity: 1;
+        filter: none;
+        // scale: 1.2;
+        transition: all 0.3s ease-in-out;
+        // transform: scale(1.2);
+        z-index: 1;
+    }
+
+    @media #{$md} {
+        
+        &:active {
+            opacity: 1;
+            filter: none;
+            // scale: 1.2;
+            transition: all 0.3s ease-in-out;
+            // transform: scale(1.2);
+            z-index: 1;
+        }
+    
+    }
+    
+    @media #{$sm} {
+        width: 99%;
+        &:active {
+            opacity: 1;
+            filter: none;
+            // scale: 1.2;
+            transition: all 0.3s ease-in-out;
+            // transform: scale(1.2);
+            z-index: 1;
+        }
+    
+    }
+    
+    @media #{$mobile} {
+        width: 99%;
+        &:active {
+            opacity: 1;
+            filter: none;
+            // scale: 1.2;
+            transition: all 0.3s ease-in-out;
+            // transform: scale(1.2);
+            z-index: 1;
+        }
+    
+    }
+}

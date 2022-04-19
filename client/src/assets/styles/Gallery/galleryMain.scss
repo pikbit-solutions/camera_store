@@ -19,18 +19,43 @@ $mobile: "only screen and (max-width: 485px)";
         margin: auto;
         text-align: center;
 
+        @media #{$md}{
+            max-width: 85%;
+
+        }
+        @media #{$sm} {
+            max-width: 85%;
+        
+        }
+        @media #{$mobile} {
+            max-width: 95%;
+        
+        }
         .gal-title{
             h1{
                 font-size: 40px;
                 color: $titlecolor;
                 padding: 10px;
             }
+            @media #{$md} {
+                font-size: 36px;
+            
+            }
+            @media #{$sm} {
+                font-size: 32px;
+                margin-top: 65px;                
+            }
+            
+            @media #{$mobile} {
+                font-size: 28px;
+                margin-top: 65px;
+            }
         }
         .gal-container{
             // height: 80vh;
             background-color: rgba(17, 17, 17, 0.466);
             backdrop-filter: blur(5px);
-            margin: 10px 10px;
+            margin-top: 10px;
             border-radius: 10px;
         }
     } 

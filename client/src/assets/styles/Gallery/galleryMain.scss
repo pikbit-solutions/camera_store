@@ -1,0 +1,67 @@
+$bgdark:#282828;
+$titlecolor:rgb(226, 162, 11);
+
+$xl-desktop: "only screen and (min-width: 1921px)";
+$desktop: "only screen and (max-width: 1920px)";
+$laptop: "only screen and (max-width: 1399px)";
+$lg: "only screen and (max-width: 1199px)";
+$md: "only screen and (max-width: 991px)";
+$sm: "only screen and  (max-width: 767px)";
+$mobile: "only screen and (max-width: 485px)";
+
+.gal{
+    background-color: $bgdark;
+    // background-image: url(../../images/coverSoon.jpg);
+    // height: 100vh;
+
+    .gal-main{
+        max-width:75%;
+        margin: auto;
+        text-align: center;
+
+        @media #{$md}{
+            max-width: 85%;
+
+        }
+        @media #{$sm} {
+            max-width: 85%;
+        
+        }
+        @media #{$mobile} {
+            max-width: 95%;
+        
+        }
+        .gal-title{
+            h1{
+                font-size: 40px;
+                color: $titlecolor;
+                padding: 10px;
+            }
+            @media #{$md} {
+                font-size: 36px;
+            
+            }
+            @media #{$sm} {
+                font-size: 32px;
+                margin-top: 65px;                
+            }
+            
+            @media #{$mobile} {
+                font-size: 28px;
+                margin-top: 65px;
+            }
+        }
+        .gal-container{
+            // height: 80vh;
+            background-color: rgba(17, 17, 17, 0.466);
+            backdrop-filter: blur(5px);
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+    } 
+}
+
+
+@import 'gallerySubgroup';
+@import 'galleryPhoto';
+

@@ -3,9 +3,12 @@ import React, { useState} from 'react'
 import AddProduct from './AddRemove/AddProduct'
 import Item from './AddRemove/ARItem';
 import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const AddRemove = () => {
+    const [currentId, setCurrentId] = useState(null); //for update product
     const products = useSelector((state) => state.products);
     const [loadAdd, setloadAdd] = useState(0);
 
@@ -14,7 +17,8 @@ const AddRemove = () => {
     }
 
     const abtn = () => {
-        setloadAdd(0)
+        setloadAdd(0);
+        setCurrentId(null);
     }
 
     
@@ -31,20 +35,26 @@ const AddRemove = () => {
                             </div>
                         </div>
                         <div className='item-list'>
-                            {products.map(product=>{
+                            {products.length>0 ? products.map(product=>{
+                                if(product.sold === false)
                                 return (<Item key={product._id}
                                     id = {product._id}
                                     image={product.featureImg}
                                     camName={product.modelname}
                                     camPrice={product.price}
-                                />)
+                                    setCurrentId={setCurrentId}
+                                    loadAdd={loadAdd}
+                                    setLoadAdd={setloadAdd}
+
+                                />);
                                 })
+                                : <CircularProgress style={{margin:'auto'}} color='warning' />
                             }
                         </div>
                     </div>
                 </div>
             </div>
-            <AddProduct active={loadAdd === 1 ? "" : "comp-deactivate"} btn={abtn}/>
+            <AddProduct active={loadAdd === 1 ? "" : "comp-deactivate"} btn={abtn} currentId={currentId} setCurrentId={setCurrentId}/>
         </div>
     )
 }

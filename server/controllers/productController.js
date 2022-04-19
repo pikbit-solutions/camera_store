@@ -29,3 +29,63 @@ export const delProduct = async (req,res)=>{
     await products.findByIdAndRemove(id);
     res.json({message:'deleted !'});
 }
+
+export const updateProduct = async (req,res)=>{
+    const { id } = req.params;
+    const product = req.body;
+    if(!mongoose.Types.ObjectId.isValid(id)) 
+        return res.status(404).send('No such product');
+    const updatedProduct = await products.findByIdAndUpdate(id,{...product,id},{new:true});
+    res.json(updatedProduct);
+}
+
+export const getSpecific = async (req,res)=>{
+    const id = req.params.id;
+    if(!mongoose.Types.ObjectId.isValid(id)) 
+        return res.status(404).send('No such product');
+    const Product = await Products.findById(id);
+    res.json(Product);
+}
+
+export const getAvilCount = async(req,res)=>{
+    try{
+        const avilCount = await products.find({sold:false}).count()
+        res.json(avilCount)
+    }catch(error){
+        res.status(404).json(error);
+    }
+}
+
+export const getSoldCount = async(req,res)=>{
+    try{
+        const avilCount = await products.find({sold:true}).count()
+        res.json(avilCount)
+    }catch(error){
+        res.status(404).json(error);
+    }
+}
+
+export const getTotalRev = async(req,res)=>{
+    try{
+        const totalRev = await products.aggregate([ { $match: { sold: true } }, 
+                                                    { $group: { _id: null, 
+                                                                TotalSum: { $sum: "$price" } 
+                                                } } ])
+        res.json(totalRev)
+    }catch(error){
+        res.status(404).json(error);
+    }
+}
+
+export const sellProduct = async(req,res)=>{
+    const {id} = req.params;
+    try{
+        if(!mongoose.Types.ObjectId.isValid(id)) 
+            return res.status(404).send('No such product');
+        const soldItem =await products.findByIdAndUpdate(id,{sold:true},{new:true});
+        res.json(soldItem);
+
+    }catch(error){
+        res.status(404).json(error);
+    }
+}

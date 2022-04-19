@@ -1,10 +1,13 @@
 import React from 'react'
+import { useState as UseState } from 'react';
+import { specificProApi } from '../../api/apiMain';
 
-const AddressLine = () => {
+const AddressLine = ({ID}) => {
+
   return (
     <div className='address-main'>
         <div className='address'>
-            store / js / kjks / product
+            Store / Product / {ID}
         </div>
     </div>
   )

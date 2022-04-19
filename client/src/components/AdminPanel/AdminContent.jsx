@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import AdminLeftPanel from './AdminLeftPanel'
 // import Dashboard from './Dashboard/Dashboard'
 import AddRemove from './AddRemove';
 import Dashboard from './Dashboard/Dashboard';
+import SoldItems from './SoldItems/SoldItems';
+import AddReview from './AddReview/AddReview';
 // import AddProduct from './AddRemove/AddProduct'
 
 const AdminContent = () => {
@@ -13,9 +14,10 @@ const AdminContent = () => {
 
     const [dashboardBtn, setDashboardBtn] = useState(<Dashboard/>);
 
-    const dashboard = () => {setDashboardBtn(<Dashboard/>)}
+    const dashboard = () => {setDashboardBtn(<Dashboard />)}
     const addRm = () => {setDashboardBtn(<AddRemove />)}
-    const RevFeed = () => {setDashboardBtn("Review feedback")}
+    const soldItems = () => {setDashboardBtn(<SoldItems />)}
+    const RevFeed = () => {setDashboardBtn(<AddReview />)}
     const inbox = () => {setDashboardBtn("inbox")}
     const other = () => {setDashboardBtn("other")}
 
@@ -26,6 +28,7 @@ const AdminContent = () => {
                     <div className='panel-items'>
                         <div className='panel-item' onClick={dashboard}>Dashboard</div>
                         <div className='panel-item' onClick={addRm}>Product add/remove</div>
+                        <div className='panel-item' onClick={soldItems}>Sold Items</div>
                         <div className='panel-item' onClick={RevFeed}>Review feedbacks</div>
                         <div className='panel-item' onClick={inbox}>Inbox</div>
                         <div className='panel-item' onClick={other}>other</div>

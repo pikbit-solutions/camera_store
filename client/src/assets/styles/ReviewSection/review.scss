@@ -1,0 +1,104 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+$rwdark:#070706cb;
+$titlecolor:rgb(215,159,23);
+
+
+$xl-desktop: "only screen and (min-width: 1921px)";
+$desktop: "only screen and (max-width: 1920px)";
+$laptop: "only screen and (max-width: 1399px)";
+$lg: "only screen and (max-width: 1199px)";
+$md: "only screen and (max-width: 991px)";
+// $xs: "only screen and (max-width: 767px)";
+$sm: "only screen and  (max-width: 767px)";
+$mobile: "only screen and (max-width: 460px)";
+
+
+.rw-title{
+    font-weight: 700;
+    padding: 10px 30px;
+    color: $titlecolor;
+    font-size: 45px;
+    background-color: $rwdark;
+
+    @media #{$laptop}{
+        font-size : 32px;
+    }
+    @media #{$sm}{
+        text-align : center;
+        padding: 10px 0;
+
+    }
+    @media #{$mobile}{
+        font-size : 25px;
+    }
+}
+
+.rw-crsl{
+    max-width: 70%;
+    margin: auto;
+    padding:0 10px;
+}
+
+.rw-all{
+    background-color: rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(10px);
+}
+
+.rw-padding{
+    width: 100%;
+    height: 50px;
+    background-color: $rwdark;
+}
+.rw-btn-container{
+    // background-color: $rwdark;
+    // margin: auto;
+    // width: 100%;
+    display: flex;
+
+    .rw-btn{
+        color: white;
+        overflow: hidden;
+        text-align: center;
+        margin:40px auto;
+        background-color: rgb(184, 129, 0);
+        padding: 20px 15px;
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+        cursor: pointer;
+
+        @media #{$desktop}{
+            font-size : 35px;
+        }
+        @media #{$laptop}{
+            font-size : 30px;
+        }
+        @media #{$sm}{
+            font-size : 25px;
+        }
+        @media #{$mobile}{
+            font-size : 20px;
+        }
+
+        span{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgb(243, 4, 4);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            z-index: -1;
+            animation: mymove 5s infinite;
+            transform-origin: center center;
+            border-radius: 50%;
+            transform: scale(0);
+        }
+    }
+    @keyframes mymove {
+        from {background-color : transparent;transform: scale(0);}
+        50% {background-color: $titlecolor;transform: scale(0);}
+        to {background-color: transparent;transform: scale(4);}
+      }
+}
+

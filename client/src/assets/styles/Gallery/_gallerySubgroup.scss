@@ -1,0 +1,51 @@
+.gal-cols {
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    margin:auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    
+    @media #{$md} {
+        flex-direction: column;
+        margin-left: 3px;
+        margin-right: 3px;
+    
+    }
+    
+    @media #{$sm} {
+        flex-direction: column;
+        margin-left: 3px;
+        margin-right: 3px;
+    
+    }
+    
+    @media #{$mobile} {
+       flex-direction: column;
+       margin-left: 3px;
+       margin-right: 3px;
+    
+    }
+
+    .left {
+        display:flex;
+        flex-direction: column;
+        flex:3;
+
+    }
+    .mid {
+        display: flex;
+        flex-direction: column;
+        flex: 4;
+        margin-left: 6px;
+        margin-right: 6px;
+    
+    }
+    .right {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+    
+    }
+
+}

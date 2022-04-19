@@ -4,24 +4,91 @@
     justify-content: center;
     .pro-imgs-container{
         padding: 20px 10px;
+        border-radius: 5px;
         display: flex;
         flex-direction: row;
         background-color: $alcolor;
+
+        @media #{$sm}{
+            flex-direction: column;
+        }
+        @media #{$usm}{
+            margin: 10px 0;
+        }
         .pro-disp-img{
             display: flex;
             justify-content: center;
             margin:0 10px;
+            
             img{
                 width:500px;
                 height: 350px;
                 object-fit: cover;
+                transition: 0.3s all ease-in-out;
+                // overflow: hidden;
+                @media #{$xl-desktop}{
+                    width:800px;
+                    height: 600px;
+                }
+                @media #{$desktop}{
+                    width:700px;
+                    height: 450px;
+                }
+                @media #{$lg}{
+                    width:600px;
+                    height:450px;
+                }
+                @media #{$md}{
+                    width:550px;
+                    height:450px;
+                }
+                @media #{$sm}{
+                    width: 500px;
+                    height:350px;
+                }
+                @media #{$mobile}{
+                    width: 350px;
+                    height:250px;
+                }
+                @media #{$usm}{
+                    width: 250px;
+                    height:250px;
+                }
+
+
+            }
+            
+            img:hover{
+                transform: scale(1.3);
+                z-index: 2;
+                transition: 0.3s all ease-in-out;
+                // overflow: visible;
+                object-fit: scale-down;
             }
         }
         .pro-sm-imgs{
             display: flex;
             flex-direction: column;
             justify-content:space-between;
+            @media #{$sm}{
+                margin: auto;
+                flex-direction: row;
+                width: 500px;
+                justify-content: space-around;
+            }
+            @media #{$mobile}{
+                width: 350px;
+                
+            }
+            @media #{$usm}{
+                width: 250px;
+            }
+            
+ 
             .pro-img{
+                @media #{$sm}{
+                    margin: auto;   
+                }
                 img{
                     opacity: 0.5;
                     padding: 0;
@@ -29,7 +96,33 @@
                     width: 120px;
                     height: 84px;
                     object-fit: cover;
+                    @media #{$xl-desktop}{
+                        width: 175px;
+                        height: 110px;
+                        border-radius: 5px;         
+                    }
+                    @media #{$desktop}{
+                        width: 175px;
+                        height: 110px;
+                        border-radius: 7px;         
 
+                    }
+                    @media #{$sm}{
+                        margin-top:10px;
+                        width: 100px;
+                        height: 85px;
+                        border-radius: 5px;   
+                    }
+                    @media #{$mobile}{
+                        width: 80px;
+                        height: 65px;
+                    }
+                    @media #{$usm}{
+                        width: 60px;
+                        height:45px;
+                    }
+
+                   
                     &:hover{
                         transform: scale(1.01);
                         opacity: 1;

@@ -1,50 +1,46 @@
-import React from 'react'
+import { useState, useState as UseState } from 'react';
 import ArrivalCard from './arrivalCard'
-import cam1 from '../../assets/images/5D.png'
-import cam2 from '../../assets/images/50D.png'
-import cam3 from '../../assets/images/700D.png'
-import cam4 from '../../assets/images/fg.png'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector as Selector } from 'react-redux';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 // import vidcam from '../../assets/images/vidcam.jpg'
 
 
 const newArrivals = () => {
+    let [count,setCount] = UseState(1);
+    const allproducts = Selector((state) => state.products);
+    const products = allproducts.reverse().filter((product)=>!product.sold).slice(0,4);
+    // const [wwidth, setWwidth] = UseState(0);
+    // setWwidth(window.innerWidth);
     return (
         <div className='arrivals'>
             <h1 className='title'>New Arrivals</h1>
             <div className='arrival-cards'>
-                <ArrivalCard
-                    imgPath={cam1}
-                    itm_model="Canon EOS 5D mark iv"
-                    itm_prize="Rs: 450,000"
-                    className="arrival-card"
-                />
-                <ArrivalCard
-                    imgPath={cam2}
-                    itm_model="Canon EOS 760D"
-                    itm_prize="Rs: 100,000"
-                />
-                <ArrivalCard
-                    imgPath={cam3}
-                    itm_model="Canon EOS 700D"
-                    itm_prize="Rs: 70,000"
-                />
-                <ArrivalCard
-                    imgPath={cam4}
-                    itm_model="Shanny SN600s"
-                    itm_prize="Rs: 15,000"
-                />
-                {/* <ArrivalCard
-                    imgPath={cam1}
-                    itm_model="Hello"
-                    itm_prize="Rs: 200,000"
-                /> */}
+
+                {products.length>0 ? products.map((product) => {
+                    if (count < 4 && !product.sold) {
+                        return (
+                            <ArrivalCard
+                                key={product._id}
+                                imgPath={product.featureImg}
+                                itm_model={product.modelname}
+                                itm_prize={product.price}
+                                proId = {product._id}
+                                className="arrival-card"
+                            />
+                        )
+                        
+                    }
+                    
+                }):<CircularProgress color='warning' style={{margin:'auto'}}/>}
+
             </div>
-            <Link to="/storepage" className='arr-anchor'>
+            <a href="/store" className='arr-anchor'>
                 View more...
-            </Link>
+            </a>
         </div>
     )
 }

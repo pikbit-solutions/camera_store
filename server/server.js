@@ -5,7 +5,7 @@ import cors from 'cors';
 import productRoute from './routes/productRouter.js'
 
 //database URI & PORT
-const CON_URI = "mongodb+srv://kavishkasulakshana:kavisula2000@trintydb.3aram.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const CON_URI = "mongodb+srv://ih3na:nnnTa6YUMUpDnsy@trintydb.3aram.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const PORT = process.env.PORT || 5000
 
 const app = express();

@@ -3,19 +3,36 @@ $bgColor:rgb(48, 48, 53);
 $bgColorHover:rgb(67, 67, 80);
 
 .search{
-    width: 70%;
+    width: 80%;
     margin: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between !important;
+    justify-content: space-between;
     padding: 30px 0 40px 0;
+    @media #{$sm}{
+        flex-direction: column-reverse;
+        margin-top: 70px;
+        width: 100%;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        @media #{$sm}{
+            margin:10px auto;
+        }
+        @media #{$midmob}{
+            
+        }
+    }
+
+    
 }
 .search-box{    
     display: flex;
     border: 1px solid $goldYellow;
     border-radius: 999px;
     width: auto;
-    margin: 0;
+    margin:0 10px;
     background-color:$bgColor;
 }
 .search-box > input{
@@ -46,5 +63,6 @@ $bgColorHover:rgb(67, 67, 80);
     border: solid $goldYellow 1px;
     background-color: $bgColor;
     color: $goldYellow;
-    width: 200px;
+    width: 150px;
+    margin: 0 10px;
 }

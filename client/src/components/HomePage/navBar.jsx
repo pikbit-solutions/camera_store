@@ -27,12 +27,12 @@ const NavBar = () => {
                     <a href="/" className='nav-item'>
                       <div>Home</div>
                     </a>
-                    <Link to="/storepage" className='nav-item'>
+                    <Link to="/store" className='nav-item'>
                       <div>Store</div>
                     </Link>
-                    <a href="/about" className='nav-item'>
-                      <div>About Us</div>
-                    </a>
+                    <Link to="/gallery" className='nav-item'>
+                      <div>Gallery</div>
+                    </Link>
                     <a href="/contact" className='nav-item'>
                       <div>Contact us</div>
                     </a>

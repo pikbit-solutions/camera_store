@@ -1,7 +1,7 @@
 import React, { useState as UseState, useEffect as UseEffect } from "react";
 import ImageGallery from "react-image-gallery";
 import "../../assets/styles/ReviewSection/review.scss";
-import { galleryRef } from "../../firebase/Fbindex.js";
+import { reviewsRef } from "../../firebase/Fbindex.js";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 import img1 from "../../assets/images/5D.png";
@@ -9,38 +9,56 @@ import img2 from "../../assets/images/700D.png";
 import img3 from "../../assets/images/50D.png";
 import { async } from "@firebase/util";
 
-const images = [{ original: img1 }, { original: img2 }, { original: img3 }];
+const images = [];
 
 const Reviews = () => {
+  const [referenceArray, setReferenceArray] = UseState([]);
   const [imageArray, setImageArray] = UseState([]);
+  const [fkBtn, setFkBtn] = UseState(false);
+
+  const seee = () => {
+    setFkBtn(!fkBtn);
+  }
+  // UseEffect(async()=>{
+    const imgAll = () => {
+      listAll(reviewsRef)
+        .then((res) => {
+          setReferenceArray(res.items);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  // },[]);
   
-//   {UseEffect(async () => {
-//     listAll(galleryRef)
-//       .then((res) => {
-//         // res.prefixes.forEach((folderRef) => {console.log(folderRef)});
-//         res.items.forEach((itemRef) => {
-//           getDownloadURL(itemRef)
-//             .then((url) => {
-//               return setImageArray([...imageArray, url]);
-//             })
-//             .catch((error) => {
-//               console.log(error);
-//             });
-//         });
-//         console.log(imageArray);
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }, [])}
-    // console.log(galleryRef.listAll());
+  UseEffect(()=>{
+    // referenceArray==0 && imageArray.length==0 && setImageArray(images);
+    if(imageArray.length<=25){
+      referenceArray==0 && imageArray.length==0 && setImageArray(images);
+    }
+    // setFkBtn(!fkBtn);
+  },[fkBtn]);
+
+  
+  if(referenceArray.length==0) imgAll();
+  referenceArray.map((reference)=>{
+     getDownloadURL(reference).then((url)=>{images.push({original : url})});
+  })
+
+  console.log(referenceArray);
+  console.log(imageArray); 
+
+
+
+
+
+  // console.log(galleryRef.listAll());
   return (
     <div className="rw-all">
       <div className="rw-title">Reviews</div>
       <div className="rw-crsl">
-        {/* {imageArray.map((imge) => (
-          <div>{imge}</div> */}
-        ))}
+        {!fkBtn && <div className="rw-btn-container" onClick={seee}><div className="rw-btn">Click to See Customer Reviews<span></span></div></div>}
+        {fkBtn && <ImageGallery items={imageArray} />}
       </div>
       <div className="rw-padding" />
     </div>

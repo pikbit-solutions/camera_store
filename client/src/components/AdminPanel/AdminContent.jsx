@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import AdminLeftPanel from './AdminLeftPanel'
 // import Dashboard from './Dashboard/Dashboard'
 import AddRemove from './AddRemove';
 import Dashboard from './Dashboard/Dashboard';
 import SoldItems from './SoldItems/SoldItems';
+import AddReview from './AddReview/AddReview';
 // import AddProduct from './AddRemove/AddProduct'
 
 const AdminContent = () => {
@@ -17,7 +17,7 @@ const AdminContent = () => {
     const dashboard = () => {setDashboardBtn(<Dashboard />)}
     const addRm = () => {setDashboardBtn(<AddRemove />)}
     const soldItems = () => {setDashboardBtn(<SoldItems />)}
-    const RevFeed = () => {setDashboardBtn("Review feedback")}
+    const RevFeed = () => {setDashboardBtn(<AddReview />)}
     const inbox = () => {setDashboardBtn("inbox")}
     const other = () => {setDashboardBtn("other")}
 

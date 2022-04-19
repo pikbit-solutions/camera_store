@@ -21,6 +21,7 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
+  const [flashAlert, setFlashAlert] = useState(false);
 
   //upload buffer
   const [process, setProcess] = useState({
@@ -126,7 +127,9 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
     else {
       dispatch(addProduct(productData));
     }
-
+    setTimeout(() => {
+      setFlashAlert(false);
+    }, 4000);
     clearForm();
   }
 
@@ -176,7 +179,7 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
         </div>
         <div className='product-back' onClick={btn}>Back</div>
       </div>
-
+      {flashAlert && <div className='rev-alert'>Review Added Successfully ! </div>}
       <form >
         <div className='form'>
 

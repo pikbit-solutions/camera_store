@@ -4,10 +4,6 @@ import "../../assets/styles/ReviewSection/review.scss";
 import { reviewsRef } from "../../firebase/Fbindex.js";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
-import img1 from "../../assets/images/5D.png";
-import img2 from "../../assets/images/700D.png";
-import img3 from "../../assets/images/50D.png";
-import { async } from "@firebase/util";
 
 const images = [];
 

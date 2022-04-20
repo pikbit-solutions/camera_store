@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import React, { useRef, useState } from 'react'
 import { ref, uploadBytesResumable } from 'firebase/storage';
-import { storage, reviewsRef } from '../../../firebase/Fbindex.js';
+import { galleryRef } from '../../../firebase/Fbindex.js';
 
-const AddReview = () => {
-
+const AddGalleryImage = () => {
+    
   const [imgName, setImgName] = useState('');
   const [image, setImage] = useState(null);
   const [process, setProcess] = useState(0);
@@ -14,7 +13,7 @@ const AddReview = () => {
   const handleImage = (event) => {
     event.preventDefault();
     if (image) {
-      const ImgRef = ref(reviewsRef, `${imgName}_${image.name}`)
+      const ImgRef = ref(galleryRef, `${imgName}_${image.name}`)
       const uploadTask = uploadBytesResumable(ImgRef, image);
       uploadTask.on(
         'state_changed',
@@ -38,24 +37,24 @@ const AddReview = () => {
 
   return (
     <div>
-      {flashAlert && <div className='rev-alert'>Review Added Successfully ! </div>}
+      {flashAlert && <div className='rev-alert'>Photo Added Successfully to the Gallery ! </div>}
       <div className='titlebar'>
         <div className='title'>
-          Add Review
+          Add Photo
         </div>
       </div>
       <form >
         <div className='form rev-admin-form'>
           <div className='item'>
             <div className='item-name'>
-              <p> Review Name  : </p>
+              <p> Photo Name  : </p>
             </div>
             <div className='item-input'>
               <input type='text'
                 onChange={(e) => { setImgName(e.target.value) }}
                 value={imgName}
-                id='item-price'
-                placeholder='Review Name'
+                id='photo-id'
+                placeholder='Photo Name'
               />
             </div>
           </div>
@@ -86,4 +85,4 @@ const AddReview = () => {
   )
 }
 
-export default AddReview
+export default AddGalleryImage

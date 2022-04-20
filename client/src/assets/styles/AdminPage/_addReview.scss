@@ -1,3 +1,5 @@
+//Same styles to add gallery images
+
 .rev-alert{
     background-color: #C9E1CE;
     color: #407641;
@@ -11,4 +13,20 @@
 
 .rev-admin-form{
     margin-top: 30px;
+}
+
+.rev-admin-content{
+    label{
+        margin-left: 30px;
+    }
+    input[type="file"] {
+        width: 100px;
+        z-index: 1;
+        top: 0px;
+        left: 100px;
+        font-size: 15px;
+        color: #b8b8b8;
+        border: none;
+        margin-left: 10px;
+      }
 }

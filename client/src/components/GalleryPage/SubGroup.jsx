@@ -1,37 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { galleryRef } from "../../firebase/Fbindex.js";
 import Photo from "./GalleryPhoto";
-import Img1 from "../../assets/images/aboutbg.jpg";
-import Img2 from "../../assets/images/Sony.jpg";
-import Img3 from "../../assets/images/red.jpg";
-import Img4 from "../../assets/images/wa3.png";
 
 const SubGroup = () => {
+  const [images, setImages] = useState([]);
+
+  const imgAll = async () => {
+    listAll(galleryRef)
+      .then((res) => {
+        return res.items.forEach((itemRef) => {
+          getDownloadURL(itemRef).then((url) => {
+            setImages((allImages) => [...allImages, url])
+          });
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  useEffect(async () => {
+    if (images.length == 0) {
+      await imgAll();
+    }
+  }, [images])
+
   return (
     <div>
       <div className="gal-cols">
         <div className="left">
-          <Photo source={Img1} />
-          <Photo source={Img2} />
-          <Photo source={Img3} />
-          <Photo source={Img1} />
-          <Photo source={Img1} />
+          {images.length > 0 ? images.slice(0, (images.length) / 3).map((image) => {
+            return (<Photo source={image} />)
+          }) : ''}
         </div>
 
         <div className="mid">
-          <Photo source={Img2} />
-          <Photo source={Img1} />
-          <Photo source={Img1} />
-          <Photo source={Img4} />
-          <Photo source={Img3} />
+          {images.length > 0 ? images.slice(((images.length / 3)), ((images.length) / 3) * 2).map((image) => {
+            return (<Photo source={image} />)
+          }) : ''}
+
         </div>
 
         <div className="right">
-          <Photo source={Img1} />
-          <Photo source={Img4} />
-          <Photo source={Img3} />
-          <Photo source={Img2} />
-          <Photo source={Img1} />
-          <Photo source={Img3} />
+          {images.length > 0 ? images.slice(((images.length) / 3 * 2)).map((image) => {
+            return (<Photo source={image} />)
+          }) : ''}
         </div>
       </div>
     </div>

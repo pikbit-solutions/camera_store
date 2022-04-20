@@ -17,4 +17,5 @@ export const storage = getStorage(app);
 
 export const productImageRef = ref(storage, 'product_images');
 export const reviewsRef = ref(storage, 'reviews');
+export const galleryRef = ref(storage, 'gallery');
 

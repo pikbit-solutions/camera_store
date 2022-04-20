@@ -4,6 +4,7 @@ import AddRemove from './AddRemove';
 import Dashboard from './Dashboard/Dashboard';
 import SoldItems from './SoldItems/SoldItems';
 import AddReview from './AddReview/AddReview';
+import AddGalleryImage from './AddGalleryImage/AddGalleryImage';
 // import AddProduct from './AddRemove/AddProduct'
 
 const AdminContent = () => {
@@ -18,7 +19,7 @@ const AdminContent = () => {
     const addRm = () => {setDashboardBtn(<AddRemove />)}
     const soldItems = () => {setDashboardBtn(<SoldItems />)}
     const RevFeed = () => {setDashboardBtn(<AddReview />)}
-    const inbox = () => {setDashboardBtn("inbox")}
+    const GalleryImages = () => {setDashboardBtn(<AddGalleryImage />)}
     const other = () => {setDashboardBtn("other")}
 
     return (
@@ -30,7 +31,7 @@ const AdminContent = () => {
                         <div className='panel-item' onClick={addRm}>Product add/remove</div>
                         <div className='panel-item' onClick={soldItems}>Sold Items</div>
                         <div className='panel-item' onClick={RevFeed}>Review feedbacks</div>
-                        <div className='panel-item' onClick={inbox}>Inbox</div>
+                        <div className='panel-item' onClick={GalleryImages}>Gallery Images</div>
                         <div className='panel-item' onClick={other}>other</div>
                     </div>
                 </div>

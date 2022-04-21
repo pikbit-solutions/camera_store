@@ -1,13 +1,15 @@
-import React, { useRef, useState } from 'react'
-import { ref, uploadBytesResumable } from 'firebase/storage';
-import { galleryRef } from '../../../firebase/Fbindex.js';
+import ProItem from '../AddReview/ProItem'
+import React, { useState } from 'react'
+import { ref, uploadBytesResumable, listAll, getDownloadURL, deleteObject } from 'firebase/storage';
+import { storage, galleryRef } from '../../../firebase/Fbindex.js';
 
 const AddGalleryImage = () => {
-    
-  const [imgName, setImgName] = useState('');
-  const [image, setImage] = useState(null);
-  const [process, setProcess] = useState(0);
-  const [flashAlert, setFlashAlert] = useState(false);
+
+  const [images, setImages] = useState([]); //all gallery images
+  const [imgName, setImgName] = useState(''); //image Name - upload
+  const [image, setImage] = useState(null); //image - upload
+  const [process, setProcess] = useState(0); //percentage while uploading
+  const [flashAlert, setFlashAlert] = useState(false); //flash alert to trigger after uploading succeeded
 
   //firebase image upload
   const handleImage = (event) => {
@@ -29,10 +31,37 @@ const AddGalleryImage = () => {
     }
   }
 
+  //load all images from firebase 
+  const imgAll = async () => {
+    await listAll(galleryRef)
+      .then((res) => {
+        return res.items.forEach((itemRef) => {
+          getDownloadURL(itemRef).then((url) => {
+            setImages((allImages) => [...allImages, url])
+          });
+        });
+      })
+      .catch((error) => {
+        alert(' Can\'t load Gallery Images ! ');
+      })
+  }
+
+  //clear button
   const clearAll = (event) => {
     event.preventDefault();
     setImgName('');
     setImage(null);
+  }
+
+  //Delete button function for each image
+  const DelItem = (imgLink) => {
+    const delRef = ref(storage, imgLink);
+    deleteObject(delRef).then(() => {
+      setImages(imgs => imgs.filter(img => img !== imgLink))
+      // console.log('deleted !')
+    }).catch((error) => {
+      alert(' Upload Error ! ');
+    });
   }
 
   return (
@@ -77,10 +106,28 @@ const AddGalleryImage = () => {
         </div>
 
         <div className='pro-add-btn-set rev-admin-btns'>
-          {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage}>Add</button>}
+          {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage} >
+            {(process === 0 || process === 100) ? 'Add' : 'Uploading'}</button>}
           <button className='ClearBtn' onClick={clearAll}>clear</button>
         </div>
       </form>
+      <div>
+        <div className='titlebar'>
+          <div className='title'>
+            Remove photos
+          </div>
+          {images.length === 0 && <div className='rev-admin-see-btn' onClick={imgAll}>
+            See Gallery Images
+          </div>}
+        </div>
+        <div className='rev-admin-all-container'>
+          {
+            images.length > 0 ? images.map((img) =>
+              <ProItem imgLink={img} key={img} DelItem={() => { DelItem(img) }} />
+            ) : ''
+          }
+        </div>
+      </div>
     </div>
   )
 }

@@ -14,6 +14,14 @@
 .rev-admin-form{
     margin-top: 30px;
 }
+.rev-admin-see-btn{
+    padding:5px 15px;
+    color:white;
+    background-color: black;
+    border-radius: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
 
 .rev-admin-content{
     label{
@@ -29,4 +37,54 @@
         border: none;
         margin-left: 10px;
       }
+}
+
+.rev-admin-all-container{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .rev-admin-rev-container{
+        width: 120px;
+        height: 170px;
+        background-color: #555555;
+        margin: 10px;
+        padding: 2px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        .rev-admin-image{
+            flex: 5;
+            // background-color: black;
+
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+
+                &:hover{
+                    object-fit: scale-down;
+                    transform: scale(2);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+            
+        }
+        .rev-admin-del-btn-container{
+            background-color: #b8b8b8;
+            flex:1;
+            display: flex;
+            background-color: #8B0303;
+            cursor: pointer;
+
+            .rev-admin-del-btn{
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                color: white;
+            }
+
+        }
+    }
 }

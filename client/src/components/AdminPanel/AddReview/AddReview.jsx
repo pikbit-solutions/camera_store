@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { ref, uploadBytesResumable } from 'firebase/storage';
+import { ref, uploadBytesResumable, listAll, getDownloadURL,deleteObject } from 'firebase/storage';
 import { storage, reviewsRef } from '../../../firebase/Fbindex.js';
+import ProItem from './ProItem';
 
 const AddReview = () => {
 
+  //same as << AddGalleryImage.jsx >>
+  const [images, setImages] = useState([]);
   const [imgName, setImgName] = useState('');
   const [image, setImage] = useState(null);
   const [process, setProcess] = useState(0);
@@ -30,11 +33,44 @@ const AddReview = () => {
     }
   }
 
+  //load all images from firebase 
+  const imgAll = async () => {
+    await listAll(reviewsRef)
+      .then((res) => {
+        return res.items.forEach((itemRef) => {
+          getDownloadURL(itemRef).then((url) => {
+            setImages((allImages) => [...allImages, url])
+          });
+        });
+      })
+      .catch((error) => {
+        alert(' Can\'t load reviews ! ');
+      })
+  }
+
+  //use effect for render images on specific renders
+  // useEffect(async () => {
+  //   if (images.length == 0) {
+  //     await imgAll();
+  //   }
+  // }, [images])
+
   const clearAll = (event) => {
     event.preventDefault();
     setImgName('');
     setImage(null);
   }
+
+  //delete function of specific image
+  const DelItem = (imgLink) => {
+    const delRef = ref(storage, imgLink);
+    deleteObject(delRef).then(() => {
+        setImages(imgs => imgs.filter(img => img !== imgLink))
+        // console.log('deleted !')
+    }).catch((error) => {
+        alert(' Upload Error ! ');
+    });
+}
 
   return (
     <div>
@@ -75,13 +111,29 @@ const AddReview = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className='pro-add-btn-set rev-admin-btns'>
-          {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage}>Add</button>}
-          <button className='ClearBtn' onClick={clearAll}>clear</button>
+          <div className='pro-add-btn-set rev-admin-btns'>
+            {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage}>Add</button>}
+            <button className='ClearBtn' onClick={clearAll}>clear</button>
+          </div>
         </div>
       </form>
+      <div>
+        <div className='titlebar'>
+          <div className='title'>
+            Remove Review
+          </div>
+          {images.length==0 && <div className='rev-admin-see-btn' onClick={imgAll}>
+            See All Reviews
+          </div>}
+        </div>
+        <div className='rev-admin-all-container'>
+          {
+            images.length>0 ? images.map((img) =>
+              <ProItem imgLink={img} key={img} DelItem={() => {DelItem(img)}}/>
+            ) : ''
+          }
+        </div>
+      </div>
     </div>
   )
 }

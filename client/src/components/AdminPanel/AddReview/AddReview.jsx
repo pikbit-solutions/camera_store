@@ -73,7 +73,7 @@ const AddReview = () => {
 }
 
   return (
-    <div>
+    <div className='rev-admin-main'>
       {flashAlert && <div className='rev-alert'>Review Added Successfully ! </div>}
       <div className='titlebar'>
         <div className='title'>
@@ -112,7 +112,7 @@ const AddReview = () => {
             </div>
           </div>
           <div className='pro-add-btn-set rev-admin-btns'>
-            {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage}>Add</button>}
+            {image && imgName !== '' && <button className='SubmitBtn' onClick={handleImage}>{(process === 0 || process === 100) ? 'Add' : 'Uploading'}</button>}
             <button className='ClearBtn' onClick={clearAll}>clear</button>
           </div>
         </div>

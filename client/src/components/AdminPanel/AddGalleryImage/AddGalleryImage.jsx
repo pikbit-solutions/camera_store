@@ -65,7 +65,7 @@ const AddGalleryImage = () => {
   }
 
   return (
-    <div>
+    <div className='rev-admin-main'>
       {flashAlert && <div className='rev-alert'>Photo Added Successfully to the Gallery ! </div>}
       <div className='titlebar'>
         <div className='title'>

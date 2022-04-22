@@ -6,6 +6,9 @@ $image-width : 70px;
     margin-left: $table-margin;
     margin-right: $table-margin;
     margin-top: 50px;
+    @media #{$sm}{
+        margin-top: 90px;
+    }
 }
 
 .table{

@@ -130,12 +130,15 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
     setTimeout(() => {
       setFlashAlert(false);
     }, 4000);
-    clearForm();
+    setAddSpec([]);
+    setFilteredArray([]);
+    setCurrentId(null);
+    setProductData({ modelname: '', stock: 0, price: 0, specs: [], description: '', images: [], featureImg: ' ' })
   }
 
   //clear the form
   const clearForm = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     setAddSpec([]);
     setFilteredArray([]);
     setCurrentId(null);

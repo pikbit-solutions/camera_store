@@ -3,7 +3,7 @@ import SoldBtn from './ItemSoldBtn'
 import EditBtn from './ItemEditBtn'
 import DelBtn from './ItemDelBtn'
 
-const ARItem = ({image,camName,camPrice,id,loadAdd,setCurrentId,setLoadAdd}) => {
+const ARItem = ({image,camName,camPrice,id,loadAdd,setCurrentId,setLoadAdd,imageLink}) => {
 
     return (
         <div>
@@ -17,7 +17,7 @@ const ARItem = ({image,camName,camPrice,id,loadAdd,setCurrentId,setLoadAdd}) => 
                     <div className='item-button-list'>
                         <SoldBtn pid={id}/>
                         <EditBtn pid={id} loadAdd={loadAdd} setCurrentId={setCurrentId} setLoadAdd={setLoadAdd}/>
-                        <DelBtn pid={id}/>
+                        <DelBtn pid={id} imageLink={imageLink}/>
                     </div>
                 </div>
             </div>

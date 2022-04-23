@@ -45,7 +45,7 @@ const AddRemove = () => {
                                     setCurrentId={setCurrentId}
                                     loadAdd={loadAdd}
                                     setLoadAdd={setloadAdd}
-
+                                    imageLink={product.images.length>0?product.images[0]:'null'}
                                 />);
                                 })
                                 : <CircularProgress style={{margin:'auto'}} color='warning' />

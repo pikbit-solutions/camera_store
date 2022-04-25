@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
 import { addProduct, getProducts } from '../../../redux/actions/productActions'
-// import {getProducts} from '../../redux/actions/productActions.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import CancelIcon from '@mui/icons-material/Cancel';
+// import {getProducts} from '../../redux/actions/productActions.js';
 
 const UpdateProduct = ({ active, btn }) => {
 

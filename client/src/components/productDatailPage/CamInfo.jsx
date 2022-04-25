@@ -6,18 +6,20 @@ const CamInfo = ({ ID }) => {
 
   const [specificProduct, setSpecificProduct] = UseState([]);
   const flag = useRef(true);
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchdata(){
     try {
       if (flag.current) {
         const { data } = await specificProApi(ID);
         setSpecificProduct(data.specs);
-        console.log(specificProduct)
+        // console.log(specificProduct)
         flag.current = false;
       }
     }
     catch (error) {
       console.log(error.message);
-    }
+    }}
+    fetchdata();
   }, [specificProduct]);
 
   return (

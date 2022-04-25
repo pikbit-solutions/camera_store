@@ -2,7 +2,7 @@ import React, { useState as UseState, useEffect as UseEffect } from "react";
 import ImageGallery from "react-image-gallery";
 import "../../assets/styles/ReviewSection/review.scss";
 import { reviewsRef } from "../../firebase/Fbindex.js";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { listAll, getDownloadURL } from "firebase/storage";
 
 
 const images = [];
@@ -38,16 +38,11 @@ const Reviews = () => {
   
   if(referenceArray.length==0) imgAll();
   referenceArray.map((reference)=>{
-     getDownloadURL(reference).then((url)=>{images.push({original : url})});
+    return getDownloadURL(reference).then((url)=>{images.push({original : url})});
   })
 
-  console.log(referenceArray);
-  console.log(imageArray); 
-
-
-
-
-
+  // console.log(referenceArray);
+  // console.log(imageArray); 
   // console.log(galleryRef.listAll());
   return (
     <div className="rw-all">

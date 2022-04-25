@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-// import Dashboard from './Dashboard/Dashboard'
 import AddRemove from './AddRemove';
 import Dashboard from './Dashboard/Dashboard';
 import SoldItems from './SoldItems/SoldItems';
 import AddReview from './AddReview/AddReview';
 import AddGalleryImage from './AddGalleryImage/AddGalleryImage';
+// import Dashboard from './Dashboard/Dashboard'
 // import AddProduct from './AddRemove/AddProduct'
 
 const AdminContent = () => {
@@ -13,14 +13,14 @@ const AdminContent = () => {
         setPanelActive(!panelActive);
     }
 
-    const [dashboardBtn, setDashboardBtn] = useState(<Dashboard/>);
+    const [dashboardBtn, setDashboardBtn] = useState(<Dashboard />);
 
-    const dashboard = () => {setDashboardBtn(<Dashboard />)}
-    const addRm = () => {setDashboardBtn(<AddRemove />)}
-    const soldItems = () => {setDashboardBtn(<SoldItems />)}
-    const RevFeed = () => {setDashboardBtn(<AddReview />)}
-    const GalleryImages = () => {setDashboardBtn(<AddGalleryImage />)}
-    const other = () => {setDashboardBtn("other")}
+    const dashboard = () => { setDashboardBtn(<Dashboard />) }
+    const addRm = () => { setDashboardBtn(<AddRemove />) }
+    const soldItems = () => { setDashboardBtn(<SoldItems />) }
+    const RevFeed = () => { setDashboardBtn(<AddReview />) }
+    const GalleryImages = () => { setDashboardBtn(<AddGalleryImage />) }
+    const other = () => { setDashboardBtn("other") }
 
     return (
         <div>

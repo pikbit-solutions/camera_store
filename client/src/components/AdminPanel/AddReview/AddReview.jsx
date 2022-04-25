@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { ref, uploadBytesResumable, listAll, getDownloadURL,deleteObject } from 'firebase/storage';
+import React, { useState } from 'react'
+import { ref, uploadBytesResumable, listAll, getDownloadURL, deleteObject } from 'firebase/storage';
 import { storage, reviewsRef } from '../../../firebase/Fbindex.js';
 import ProItem from './ProItem';
 
@@ -65,12 +64,12 @@ const AddReview = () => {
   const DelItem = (imgLink) => {
     const delRef = ref(storage, imgLink);
     deleteObject(delRef).then(() => {
-        setImages(imgs => imgs.filter(img => img !== imgLink))
-        // console.log('deleted !')
+      setImages(imgs => imgs.filter(img => img !== imgLink))
+      // console.log('deleted !')
     }).catch((error) => {
-        alert(' Upload Error ! ');
+      alert(' Upload Error ! ');
     });
-}
+  }
 
   return (
     <div className='rev-admin-main'>
@@ -122,14 +121,14 @@ const AddReview = () => {
           <div className='title'>
             Remove Review
           </div>
-          {images.length==0 && <div className='rev-admin-see-btn' onClick={imgAll}>
+          {images.length == 0 && <div className='rev-admin-see-btn' onClick={imgAll}>
             See All Reviews
           </div>}
         </div>
         <div className='rev-admin-all-container'>
           {
-            images.length>0 ? images.map((img) =>
-              <ProItem imgLink={img} key={img} DelItem={() => {DelItem(img)}}/>
+            images.length > 0 ? images.map((img) =>
+              <ProItem imgLink={img} key={img} DelItem={() => { DelItem(img) }} />
             ) : ''
           }
         </div>

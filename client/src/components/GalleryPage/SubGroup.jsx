@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { listAll, getDownloadURL } from "firebase/storage";
 import { galleryRef } from "../../firebase/Fbindex.js";
 import Photo from "./GalleryPhoto";
 
@@ -20,10 +20,13 @@ const SubGroup = () => {
       })
   }
 
-  useEffect(async () => {
-    if (images.length == 0) {
-      await imgAll();
+  useEffect(() => {
+    async function fetchimages() {
+      if (images.length == 0) {
+        await imgAll();
+      }
     }
+    fetchimages();
   }, [images])
 
   return (
@@ -31,20 +34,20 @@ const SubGroup = () => {
       <div className="gal-cols">
         <div className="left">
           {images.length > 0 ? images.slice(0, (images.length) / 3).map((image) => {
-            return (<Photo source={image} />)
+            return (<Photo key={image} source={image} />)
           }) : ''}
         </div>
 
         <div className="mid">
           {images.length > 0 ? images.slice(((images.length / 3)), ((images.length) / 3) * 2).map((image) => {
-            return (<Photo source={image} />)
+            return (<Photo key={image} source={image} />)
           }) : ''}
 
         </div>
 
         <div className="right">
           {images.length > 0 ? images.slice(((images.length) / 3 * 2)).map((image) => {
-            return (<Photo source={image} />)
+            return (<Photo key={image} source={image} />)
           }) : ''}
         </div>
       </div>

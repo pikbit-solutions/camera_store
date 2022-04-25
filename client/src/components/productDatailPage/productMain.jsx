@@ -1,7 +1,5 @@
 import { useParams as UseParams } from 'react-router-dom'
-import { useSelector as Selector } from 'react-redux'
 import '../../assets/styles/productDetailPage/productDetail.scss'
-import { specificProApi } from '../../api/apiMain'
 import Navbar from '../HomePage/navBar'
 import AddressLine from './AddressLine'
 import ProductImgs from './ProductImgs'
@@ -9,7 +7,8 @@ import CamTitles from './CamTitles'
 import CamInfo from './CamInfo'
 import CamDetail from './CamDetail'
 import Footer from '../HomePage/footer'
-import { useEffect as UseEffect, useState as UseState } from 'react'
+// import { useSelector as Selector } from 'react-redux'
+// import { specificProApi } from '../../api/apiMain'
 
 
 

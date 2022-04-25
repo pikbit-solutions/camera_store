@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useState as UseState, useEffect, useRef} from 'react';
+import { useState as UseState, useEffect, useRef } from 'react';
 import { specificProApi } from '../../api/apiMain';
 import CircularProgress from '@mui/material/CircularProgress';
 import blankImg from '../../assets/images/specificProduct/blank/blank.jpg'
@@ -8,17 +8,20 @@ const ProductImgs = ({ ID }) => {
 
     const [specificProduct, setSpecificProduct] = UseState([]);
     const flag = useRef(true);
-    useEffect(async () => {
-        try {
-            if (flag.current) {
-                const { data } = await specificProApi(ID);
-                setSpecificProduct(data);
+    useEffect(() => {
+        async function fetchdata() {
+            try {
+                if (flag.current) {
+                    const { data } = await specificProApi(ID);
+                    setSpecificProduct(data);
+                }
             }
+            catch (error) {
+                console.log(error.message);
+            }
+            flag.current = false;
         }
-        catch (error) {
-            console.log(error.message);
-        }
-        flag.current = false;
+        fetchdata()
     }, []);
     const [pictures, setPictures] = useState([]);
     // const []

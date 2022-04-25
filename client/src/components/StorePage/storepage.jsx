@@ -12,14 +12,14 @@ const Storepage = () => {
 
     const productList = selector((state) => state.products);
     let productListRev = productList.reverse();
-    // productByPrice.sort((a, b) => { return a.price - b.price })
-    // const productByPriceRev = productByPrice.reverse();
     const [sortList, setSortList] = useState('ntoo');
 
+    // productByPrice.sort((a, b) => { return a.price - b.price })
+    // const productByPriceRev = productByPrice.reverse();
     // console.log(productList);
-    useEffect(() => {
-        console.log(sortList);
-    }, [sortList]);
+    // useEffect(() => {
+    //     console.log(sortList);
+    // }, [sortList]);
 
     return (
         <div className='storepage'>
@@ -31,12 +31,13 @@ const Storepage = () => {
                     if (!product.sold)
                         return (
                             <Card
+                                key={product._id}
                                 imagepath={product.featureImg}
                                 price={product.price}
                                 specs={product.specs}
                                 id={product._id}
                                 name={product.modelname}
-                                key={product._id} />
+                            />
                         )
                 }) : (sortList === 'ntoo' && <CircularProgress color='warning' style={{ margin: '10px' }} />)}
 
@@ -44,12 +45,13 @@ const Storepage = () => {
                     if (!product.sold)
                         return (
                             <Card
+                                key={product._id}
                                 imagepath={product.featureImg}
                                 price={product.price}
                                 specs={product.specs}
                                 id={product._id}
                                 name={product.modelname}
-                                key={product._id} />
+                            />
                         )
                 }) : (sortList === 'oton' && <CircularProgress color='warning' style={{ margin: '10px' }} />)}
 

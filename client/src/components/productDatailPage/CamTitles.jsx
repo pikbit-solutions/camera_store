@@ -1,21 +1,24 @@
-import React,{useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useState as UseState } from 'react';
 import { specificProApi } from '../../api/apiMain';
 
 const CamTitles = ({ ID }) => {
   const [specificProduct, setSpecificProduct] = UseState([]);
   const flag = useRef(true);
-  useEffect(async () => {
-    try {
-      if (flag.current) {
-        const { data } = await specificProApi(ID);
-        setSpecificProduct(data);
+  useEffect(() => {
+    async function fetchdata() {
+      try {
+        if (flag.current) {
+          const { data } = await specificProApi(ID);
+          setSpecificProduct(data);
+        }
       }
+      catch (error) {
+        console.log(error.message);
+      }
+      flag.current = false;
     }
-    catch (error) {
-      console.log(error.message);
-    }
-    flag.current = false;
+    fetchdata();
   }, []);
 
   return (

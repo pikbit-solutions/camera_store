@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import navlogo from '../../assets/images/navLogo.png'
 import { Link } from "react-router-dom";
 
@@ -23,19 +23,19 @@ const NavBar = () => {
                         </div>
                     </div>
                 </div>
-                <div className={isActive?'nav-items':'nav-items nav-active'}>
+                <div className={isActive ? 'nav-items' : 'nav-items nav-active'}>
                     <a href="/" className='nav-item'>
-                      <div>Home</div>
+                        <div>Home</div>
                     </a>
                     <Link to="/store" className='nav-item'>
-                      <div>Store</div>
+                        <div>Store</div>
                     </Link>
                     <Link to="/gallery" className='nav-item'>
-                      <div>Gallery</div>
+                        <div>Gallery</div>
                     </Link>
-                    <a href="/contact" className='nav-item'>
-                      <div>Contact us</div>
-                    </a>
+                    <Link to="/login" className='nav-item'>
+                        <div>Login</div>
+                    </Link>
                 </div>
             </div>
         </div>

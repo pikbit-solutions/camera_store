@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:5000';
+const url = 'https://trintycam.herokuapp.com';
 
 const productUrl = `${url}/products`;
 const specsUrl = `${url}/specs`;

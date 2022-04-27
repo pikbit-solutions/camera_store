@@ -13,6 +13,7 @@ const Storepage = () => {
     const productList = selector((state) => state.products);
     let productListRev = productList.reverse();
     const [sortList, setSortList] = useState('ntoo');
+    // const [avil,setAvil] = useState(false);
 
     // productByPrice.sort((a, b) => { return a.price - b.price })
     // const productByPriceRev = productByPrice.reverse();
@@ -24,11 +25,11 @@ const Storepage = () => {
     return (
         <div className='storepage'>
             <NavBar />
-            <div className='store'>
+            <div className='store' style={productList.length>0?{height:'auto'}:{height:'50vh'}}>
                 <Search setSortList={setSortList} />
 
                 {(sortList === 'ntoo' && productListRev.length > 0) ? productListRev.map((product) => {
-                    if (!product.sold)
+                    if (!product.sold){
                         return (
                             <Card
                                 key={product._id}
@@ -39,6 +40,8 @@ const Storepage = () => {
                                 name={product.modelname}
                             />
                         )
+                    }
+                        
                 }) : (sortList === 'ntoo' && <CircularProgress color='warning' style={{ margin: '10px' }} />)}
 
                 {(sortList === 'oton' && productList.length > 0) ? productList.map((product) => {

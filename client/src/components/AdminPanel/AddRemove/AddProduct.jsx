@@ -121,19 +121,22 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
   //submit button event
   const submitHandle = (e) => {
     e.preventDefault();
-    if (currentId) {
-      dispatch(updateProduct(currentId, productData));
+    if(productData.modelname !== '' && productData.featureImg !== ' '){
+      if (currentId) {
+        dispatch(updateProduct(currentId, productData));
+      }
+      else {
+        dispatch(addProduct(productData));
+      }
+      setFlashAlert(true);
+      setTimeout(() => {
+        setFlashAlert(false);
+      }, 4000);
+      setAddSpec([]);
+      setFilteredArray([]);
+      setCurrentId(null);
+      setProductData({ modelname: '', stock: 0, price: 0, specs: [], description: '', images: [], featureImg: ' ' })
     }
-    else {
-      dispatch(addProduct(productData));
-    }
-    setTimeout(() => {
-      setFlashAlert(false);
-    }, 4000);
-    setAddSpec([]);
-    setFilteredArray([]);
-    setCurrentId(null);
-    setProductData({ modelname: '', stock: 0, price: 0, specs: [], description: '', images: [], featureImg: ' ' })
   }
 
   //clear the form
@@ -163,6 +166,14 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
     renderSpec();
     setChangeFocus("");
   }
+  const keyAddSpecItem = (e) => {
+    if (e.key === 'Enter') {
+      changeFocus !== "" && changeFocus !== " " && addSpec.push(changeFocus);
+      setAddSpec(addSpec);
+      renderSpec();
+      setChangeFocus("");
+    }
+  }
 
   //delete a specification
   const delSpec = (val) => {
@@ -182,7 +193,7 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
         </div>
         <div className='product-back' onClick={btn}>Back</div>
       </div>
-      {flashAlert && <div className='rev-alert'>Review Added Successfully ! </div>}
+      {flashAlert && <div className='rev-alert'>Product Added Successfully ! </div>}
       <form >
         <div className='form'>
 
@@ -224,7 +235,7 @@ const AddProduct = ({ active, btn, currentId, setCurrentId }) => {
                 <input type='text'
                   value={changeFocus}
                   onChange={(e) => { setChangeFocus(e.target.value) }} />
-                <div className='add-spec-btn' onClick={addSpecItem}>
+                <div className='add-spec-btn' onClick={addSpecItem} onKeyPress={keyAddSpecItem}>
                   <AddCircleOutlineIcon />
                 </div>
               </div>

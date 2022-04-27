@@ -38,9 +38,9 @@ const newArrivals = () => {
                 }):<CircularProgress color='warning' style={{margin:'auto'}}/>}
 
             </div>
-            <a href="/store" className='arr-anchor'>
+            <Link to="/store" className='arr-anchor'>
                 View more...
-            </a>
+            </Link>
         </div>
     )
 }

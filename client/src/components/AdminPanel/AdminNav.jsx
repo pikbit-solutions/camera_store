@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import navlogo from '../../assets/images/navLogo.png'
 import { Link } from "react-router-dom";
+import { useAuth } from '../../contexts/AuthContext';
+
 
 const AdminNav = () => {
+    const {logout} = useAuth();
     const [isActive, setIsActive] = useState(false);
     const activator = () => {
         setIsActive(!isActive);
@@ -22,15 +25,15 @@ const AdminNav = () => {
                         </div>
                     </div>
                 </div>
-                <div className={isActive?'nav-items':'nav-items nav-active'}>
+                <div className={isActive ? 'nav-items' : 'nav-items nav-active'}>
                     {/* <a href="#home" className='nav-item'>
                       <div>Home</div>
                     </a> */}
                     <div className='admin-nav-person'>
                         <p className='admin-person-tag'>Admin</p>
                     </div>
-                    <Link to="/storepage" className='nav-item'>
-                      <div>Logout</div>
+                    <Link to="/" className='nav-item' onClick={logout}>
+                        <div >Logout</div>
                     </Link>
                 </div>
             </div>

@@ -20,7 +20,7 @@ const AdminContent = () => {
     const soldItems = () => { setDashboardBtn(<SoldItems />) }
     const RevFeed = () => { setDashboardBtn(<AddReview />) }
     const GalleryImages = () => { setDashboardBtn(<AddGalleryImage />) }
-    const other = () => { setDashboardBtn("other") }
+    // const other = () => { setDashboardBtn("other") }
 
     return (
         <div>
@@ -32,7 +32,7 @@ const AdminContent = () => {
                         <div className='panel-item' onClick={soldItems}>Sold Items</div>
                         <div className='panel-item' onClick={RevFeed}>Review feedbacks</div>
                         <div className='panel-item' onClick={GalleryImages}>Gallery Images</div>
-                        <div className='panel-item' onClick={other}>other</div>
+                        {/* <div className='panel-item' onClick={other}>other</div> */}
                     </div>
                 </div>
 

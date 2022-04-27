@@ -32,20 +32,20 @@ const SubGroup = () => {
   return (
     <div>
       <div className="gal-cols">
-        <div className="left">
+        <div className="left" style={images.length>0?{height:'auto'}:{height:'50vh'}}>
           {images.length > 0 ? images.slice(0, (images.length) / 3).map((image) => {
             return (<Photo key={image} source={image} />)
           }) : ''}
         </div>
 
-        <div className="mid">
+        <div className="mid" style={images.length>0?{height:'auto'}:{height:'50vh'}}>
           {images.length > 0 ? images.slice(((images.length / 3)), ((images.length) / 3) * 2).map((image) => {
             return (<Photo key={image} source={image} />)
           }) : ''}
 
         </div>
 
-        <div className="right">
+        <div className="right" style={images.length>0?{height:'auto'}:{height:'50vh'}}>
           {images.length > 0 ? images.slice(((images.length) / 3 * 2)).map((image) => {
             return (<Photo key={image} source={image} />)
           }) : ''}

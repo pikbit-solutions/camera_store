@@ -12,6 +12,9 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null)
+    const logout = () => {
+        setCurrentUser(null);
+    }
     const login = (email, password) =>
         setPersistence(auth, browserSessionPersistence).then(async () => { //still not nesessory
             return signInWithEmailAndPassword(auth, email, password) //remove return state if session do not want
@@ -38,6 +41,7 @@ export const AuthProvider = ({ children }) => {
     const value = {
         currentUser,
         login,
+        logout
 
     }
 

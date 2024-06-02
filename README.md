@@ -1,4 +1,4 @@
-# Camera Store Project
+# Camera Store
 
 ## Overview
 
